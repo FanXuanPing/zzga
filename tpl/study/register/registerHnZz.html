@@ -1,0 +1,452 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：注册页面
+-->
+<style>
+    .body ul li > label.add {
+        overflow:hidden;
+        white-space: pre-wrap !important;
+        text-overflow:clip !important;
+        line-height: 140% !important;
+        margin-top:0.5em;
+    }
+.body ul li > label{
+	margin: 0;
+}
+    .body ul li {
+        height:3.2em;
+        line-height:3.2em;
+    }
+
+    .body ul li > label{
+        height:3.2em;
+        line-height:3.2em;
+        color:#333333;
+    }
+ 
+
+    .body ul li > label > a {
+        position: relative;
+        left:1em;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border-radius: 0;
+    }
+
+    .btn_submit {
+        display:inline-block;
+        background:#eee;
+        color:#ccc;
+        font-size:1.1em;
+        width:50%;
+        padding:0.8em 3em;
+        border-radius: 1.5em;
+        text-align: center;
+    }
+
+    .btn_submit.sure {
+        background:#00a8f3;
+        color:#fff;
+    }
+
+
+    .maskBg {
+        color:#fff;
+        display:inline-block;
+        position: absolute;
+        top:0px;
+        left:0px;
+        z-index:1000;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        font-size:1.2em;
+        text-align: center;
+    }
+
+    .spinner {
+        margin: 200px auto;
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    .container1 > div, .container2 > div, .container3 > div {
+        width: 16px;
+        height: 16px;
+        background-color: #00a8f3;
+
+        border-radius: 100%;
+        position: absolute;
+        -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+        animation: bouncedelay 1.2s infinite ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .spinner .spinner-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container2 {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+    }
+
+    .container3 {
+        -webkit-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+    }
+
+    .circle1 { top: 0; left: 0; }
+    .circle2 { top: 0; right: 0; }
+    .circle3 { right: 0; bottom: 0; }
+    .circle4 { left: 0; bottom: 0; }
+
+    .container2 .circle1 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .container3 .circle1 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .container1 .circle2 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .container2 .circle2 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .container3 .circle2 {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .container1 .circle3 {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .container2 .circle3 {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .container3 .circle3 {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .container1 .circle4 {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .container2 .circle4 {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .container3 .circle4 {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0.0) }
+        40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        } 40% {
+              transform: scale(1.0);
+              -webkit-transform: scale(1.0);
+          }
+    }
+
+    .textbg {
+        position: relative;
+        top:-180px;
+    }
+
+    header > a {
+        position: absolute !important;
+        left:5% !important;
+        color:#fff !important;
+        font-size:1.8em !important;
+    }
+
+    header > a.close {
+        left:auto !important;
+        right:5% !important;
+    }
+    .syinput{
+    	color:black;
+    	margin-top: 10px;
+    	height: 30px;
+    	float: right;
+        border: 1px solid #ccc;
+        padding: 7px 0px;
+        border-radius: 3px;
+        padding-left:5px;
+       /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        */
+       -webkit-user-select:auto;
+    }
+    .syinput:focus{
+    	border-color: #66afe9;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+    .syselect{
+    	border: solid 1px #EAEAEA;
+	    width: 3.5rem;
+	    outline: none;
+	    height: 30px;
+	    float: right;
+	    margin-top: 10px;
+	    background-color: #EDEDED;
+    }
+.body ul li > label > span {
+    width: 3rem;
+    display: inline-block;
+    height: 3.2em;
+    /* background: red; */
+    text-align: right;
+    font-size: 0.35rem;
+}
+</style>
+<div class="wrapper-md" ng-controller="RegisterController">
+    <header align="center" >
+        <!--<a class="btnA"  ng-click="close()" ><i class="fa fa-angle-left " ></i></a>-->
+         <a class="btnA" style="margin-top: 10px;">
+    	<i class="fa fa-angle-left " ng-click="goBack()"  ></i></a>
+        <span ng-bind="title"></span>
+    </header>
+    <div class="container">
+        <div class="body" >
+            <ul>
+                <li>
+                    <label>
+                        <span>业务受理地：</span>
+                        <select ng-model="areaCode" class="syselect" autocomplete="off">
+	                        <option value="410101" ng-selected="true">市辖区</option>
+	                        <option value="410102">中原区</option>
+	                        <option value="410103">二七区</option>
+	                        <option value="410104">管城区</option>
+	                        <option value="410105">金水区</option>
+	                        <option value="410106">上街区</option>
+	                        <option value="410108">惠济区</option>
+	                        <option value="410122">中牟县</option>
+	                        <option value="410181">巩义市</option>
+	                        <option value="410182">荥阳市</option>
+	                        <option value="410183">新密市</option>
+	                        <option value="410184">新郑市</option>
+	                        <option value="410185">登封市 </option>
+	                        <option value="410186">其他地市</option>
+                       </select>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>身份证件名称：</span>
+                        <a>
+                            <select ng-model="idType" class="syselect">
+                                <option value="A" ng-selected="true">A：居民身份证</option>
+								<option value="C">C：军官证</option>
+								<option value="D">D：士兵证</option>
+								<option value="E">E：军官离退休证</option>
+								<option value="F">F：境外人员身份证明</option>
+								<option value="G">G：外交人员身份证明</option>
+                            </select>
+                        </a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>身份证件号码：</span>
+                        <span style="width: 3.5rem; float: right; margin-left: 20px; 
+    margin-top: 0.2rem;"> <input type="text" name="idCard" ng-model="idCard" class="form-control"/></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>姓名：</span>
+                         <span style="width: 3.5rem; float: right; margin-left: 20px; 
+    margin-top: 0.2rem;"> <input type="text" name="name" ng-model="name" class="form-control" /></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>最高准驾车型：</span>
+                        <a>
+                            <select ng-model="drivingType"  class="syselect">
+                               <option value="A1" ng-selected="true">A1</option>
+								<option value="A2">A2</option>
+								<option value="A3">A3</option>
+								<option value="A1A2">A1A2</option>
+								<option value="B1">B1</option>
+								<option value="B2">B2</option>
+								<option value="B1B2">B1B2</option>
+								<option value="C1">C1</option>
+								<option value="C2">C2</option>
+								<option value="C3">C3</option>
+								<option value="C4">C4</option>
+								<option value="C5">C5</option>
+								<option value="E">E</option>
+								<option value="F">F</option>
+								<option value="M">M</option>
+								<option value="N">N</option>
+								<option value="P">P</option>
+                            </select>
+                        </a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>上周期记分：</span>
+                        <a>
+                            <select ng-model="points"  class="syselect">
+                              <option value="0">0</option>
+						      <option value="1">1</option>
+						      <option value="2">2</option>
+						      <option value="3">3</option>
+						      <option value="4">4</option>
+						      <option value="5">5</option>
+						      <option value="6">6</option>
+						      <option value="7">7</option>
+						      <option value="8">8</option>
+						      <option value="9">9</option>
+						      <option value="10">10</option>
+						      <option value="11">11</option>
+						      <option value="12">12</option>
+                            </select>
+                        </a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>联系电话：</span>
+                         <span style="width: 3.5rem; float: right; margin-left: 20px; 
+    margin-top: 0.2rem;"> <input type="text" name="tel" ng-model="tel" class="form-control" /></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>驾驶证档案编号：</span>
+                         <span style="width: 3.5rem; float: right; margin-left: 20px; 
+    margin-top: 0.2rem;"> <input type="text" name="archNo" ng-model="archNo" class="form-control" /></span>
+                    </label>
+                </li>
+            	<!--<li>
+                    <label>
+                        <span>驾驶证状态：</span>
+                         <span style="width: 3.5rem; float: right; margin-left: 20px; 
+    margin-top: 0.2rem;"> <input type="text" name="license" ng-model="license" class="form-control" /></span>
+                    </label>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="bottomDiv" align="center" >
+        <a class="btn_submit sure" ng-click="doInfoConfirm()">注册</a>
+    </div>
+    
+    <!-- 模态框，显示公告 begin -->
+    <div id="modalNoticeDiv" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f0f3f4;">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                    <h4 class="modal-title">驾驶人网上注册参加审验教育须知</h4>
+                </div>
+                <div class="modal-body">
+                    <p>一、  驾驶人网上注册参加审验教育须知</p>
+                    <p>1、 一个记分周期内累积记分超过0分的大中型客货车驾驶人和校车驾驶人，
+                                                             以及持有其他准驾车型驾驶证发生交通事故造成人员死亡承担同等以上责任未被吊销驾驶证的驾驶人，应到宣城市车管所参加现场审验教育；
+                    </p>
+                    <p>
+                       2、 在一个记分周期内累计记分未达到9分的大中型客货车驾驶人和校车驾驶人， 
+                                                                    在"宣城市驾驶人审验教育和满分教育平台"上直接按注册提示步骤进行注册，经车管所审核同意后，24小时内在线完成3小时教育，可以不参加现场教育；
+                    </p>
+                    <p>3、 完成网上在线3小时教育后，宣城市车管所将对完成学时的驾驶人进行审核，驾驶人需前往车管所打印“审验教育记录单”，并在“记录单”上签字确认，审核通过后直接进行审验；
+                    </p>
+                    <p>4、 在网上完成学习的，发现由他人替学行为或不符合网上教育条件的，取消本次审验教育学时，重新进行审验教育。</p>
+                    <p>5、审验教育注册密码默认为123456</p>
+                    <p>6、只有持有宣城市车管下发的驾驶证的驾驶人才能在本平台进行审验教育注册，并在本平台学习。</p>
+                   <p>二、特别提示：所有参加审验的驾驶人必须阅读以下审告内容，如果不符合审告内容的将自行终止审验学习</p>
+                    <p style="width:100%;text-align:center;font-weight:bold"> 机动车驾驶人身体情况审告内容</p>
+					<p>1、本人身体条件符合中华人民共和国驾驶证申请条件；</p>
+					<p>2、本人不具有器质性心脏病、癫痫病、美尼尔氏症、眩晕症、癔病、震颤麻痹、精神病、痴呆、影响肢体活动的神经系统疾病等妨碍安全驾驶疾病，及三年内有吸食、注射毒品行为或者解除强制隔离戒毒措施未满三年，或者长期服用依赖性精神药品成瘾尚未戒除的情况；</p>
+					<p>3、本人的身体条件如果发生不符合机动车驾驶许可条件的情形，本人将在30日内向公安机关申请降低准驾车型或注销机动车驾驶证；</p>
+					<p>4、上述申告为本人真实情况和真实意思表示，如有不属实本人自愿承担相应的法律责任。</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" ng-click="hideNoticeDiv()">确&nbsp;&nbsp;定</button>
+                    <button type="button" class="btn btn-primary" ng-click="goBack()">取&nbsp;&nbsp;消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框，显示公告 end -->
+    
+    <div id="maskDivId" class="maskBg" ng-show="isShowMask" style="display: none;">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+
+        </div>
+        <div class="textbg" >正在提交中...</div>
+    </div>
+    <script type="text/javascript" >
+        window.unonload = function(){ window.location = BACKURL};
+        
+        /**
+         * 关闭公告
+         */
+        function onCloseNoticeDialog() {
+            $("#modalNoticeDiv").modal("hide");
+            $("#maskDivId").css("display", "none");
+        };
+        $(document).ready(function(){
+			/*$("#modalNoticeDiv").modal("show");*/
+		});
+    </script>
+</div>

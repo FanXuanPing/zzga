@@ -1,0 +1,315 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：视频学习、课程树显示页面
+-->
+<style >
+
+    header {
+        display:inline-block;
+        width:100%;
+        background:rgba(0,0,0,0.4);
+        color:#fff;
+        font-size:1em;
+        font-weight: 500;
+        height:3em;
+        /*line-height:15em;;*/
+        position: fixed;
+        top:0px;
+        left:0px;
+        pointer-events:none;
+        z-index:1000000
+    }
+
+    header  a {
+        position: absolute;
+        top: 0px;
+    }
+
+    header > span {
+        float:left;
+        display:inline-block;
+        position: absolute;
+        top:50%;
+        left:10%;
+        transform: translate(0%,-50%);
+    }
+
+    .btnA {
+        float:left;
+        line-height:0em;
+        font-size:2.2em;
+        font-weight: 700 !important;
+        color:#fff;
+        position: absolute;
+        margin: 0.1em 0.4em;
+        left:0;
+        top:0%;
+        transform: translate(0,10%);
+        z-index:100000000;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border:0px;
+        border-radius:0px;
+
+    }
+
+    .container .img {
+        border:0px;
+        height:15em;
+        background:#000;
+    }
+
+    .container .body {
+        width:100%;
+        display:inline-block;
+        overflow:auto !important;
+        height:15em;
+
+    }
+
+    .body  ul {
+        padding-bottom:3em;
+    }
+
+    .body  ul li {
+        width:100%;
+        min-height:3.2em;
+        height:auto !important;
+        border-bottom:1px #dedede solid;
+        font-size:1.2em;
+        color:#333;
+        font-weight: 300;
+        position:relative;
+    }
+
+    .body  ul li > label {
+        margin:0 2.5%;
+        width:90%;
+        font-size:0.8em;
+        font-weight: 500;
+        height:4em;
+        display:inline-block;
+        white-space:pre-wrap;
+        line-height:normal;
+        position: relative;
+    }
+
+    .body  ul li > label > span {
+        float:left;
+        position: absolute;
+        line-height:150%;
+        width:96%;
+        top:60%;
+        left:0%;
+        transform: translate(0,-50%);
+    }
+
+    .body  ul li > label > a {
+
+    }
+
+    .body  ul li > a {
+        position: absolute;
+        top:50%;
+        right:2%;
+        font-size:2em;
+        font-weight: 100;
+        color:#c3c3c3;
+        transform: translate(0,-50%) scale(0.9);
+    }
+    .dian {
+        position: absolute;
+        display:inline-block;
+        width:5px;
+        height:5px;
+        border-radius: 50%;
+        background: #038ef5;
+        float:left;
+        margin:0 2.5%;
+        top:50%;
+        left:5%;
+        transform: translate(0,-50%);
+    }
+
+    .body  ul li > a.lock {
+        right:7%;
+        font-size:1.1em;
+        color:#999;
+    }
+
+    .body  ul li .icon-close {
+        font-size:0.7em !important;
+    }
+
+    .body  ul li .childNode {
+        width:60%;
+        margin:0 20%;
+        height:auto;
+
+    }
+
+    .body  ul li .childNode > i {
+        width: 2.3em;
+        height:2.3em;
+        margin:0.5em;
+        border:1px solid #333;
+        border-radius: 0.8em;
+        text-align: center;
+        font-size:0.8em;
+        line-height:2.3em;
+        background:#fff;
+        color:#008df5;
+    }
+
+    .body  ul li .childNode > a {
+        width: 80%;
+        height:2.3em;
+        margin:0.5em;
+        border-radius: 0.8em;
+        text-align: center;
+        font-size:0.8em;
+        line-height:2.3em;
+        background:#008df5;
+        color:#fff;
+        position: relative;
+        left:10%;
+    }
+
+    .childNode > i[clicked="true"] {
+        background:#008df5 !important;
+        color:#fff !important;;
+        border:1px solid #008df5 !important;
+    }
+
+    .childNode > i[type=after] {
+        border:1px solid #999;
+        background:#fff;
+        color:#999;
+    }
+
+    .childNode > i[type=befor] {
+        border:1px solid #999;
+        background: #8cff8e;
+        color:#999;
+    }
+
+    li[islocked=true] > label >span {
+        color:#999;
+    }
+
+    #playbutton {
+        width:45px !important;
+        height:45px !important;
+        left:50% !important;
+        top:50% !important;
+        transform: translate(-50%,-50%) !important;
+    }
+
+    a.close {
+        position: absolute !important;
+        left:auto !important;
+        right:5% !important;
+        color:#fff !important;
+        font-size:1.2em !important;
+        opacity:1 !important;
+        top:2% !important;
+        transform: translate(0%,-13%) !important;
+        z-index:10000000;
+    }
+
+    .btnClickA{
+        display:inline-block;
+        position: absolute;
+        width:6em;
+        font-size:1em;
+        height:2.5em;
+        background:#00a8f3;
+        color:#fff;
+        line-height:2.5em;
+        border-radius: 2em;
+        right:15%;
+        text-align: center;
+        top:50%;
+        transform: translate(0%,-50%) !important;
+    }
+
+</style>
+<div class="wrapper-md" ng-controller="StudyController">
+    <a class="btnA"><i class="fa fa-angle-left " ng-click="goBack()"  ></i></a><a class="close" style="display:none;" ><i class="fa fa-close" ng-click="close()"></i></a>
+    <header align="left" >
+        <!--<span>机动车驾驶证审验教育</span>-->
+    </header>
+    <div class="container">
+        <div id="plvDiv" class="img" >
+            <!--  视频区 -->
+
+        </div>
+        <div class="body" >
+                <ul style="height:800px;">
+                    <li>
+                        <label>
+                            <span>{{showNodes.name}}</span></label>
+                        <a ><i ng-if="parentNodeA.length == 0 " class="fa fa-angle-down"></i>
+                            <i ng-if="parentNodeA.length > 0 " ng-click="closeLayer()" class="fa  icon-close"></i>
+                        </a>
+                    </li>
+                    <li ng-repeat="item in showNodes.childs" islocked="{{item.islocked}}">
+                        <label>
+                            <span  ng-click="showNextLayer(item)" >{{item.name}}</span></label>
+                        <a class="lock"><i ng-if="item.islocked == true" class="fa icon-lock" ></i>
+                            <!--<i ng-if="item.islocked == false" class="fa icon-lock-open" ></i> -->
+                        </a>
+                        <a ><i ng-if="item.isPlayNode == null && item.isTest == null" class="fa fa-angle-right" ng-click="showNextLayer(item)"></i>
+                            <i ng-if="item.isPlayNode == true || item.isTest == true " class="fa fa-angle-down" ng-click="showNextLayer(item)"></i>
+                        </a>
+                        <!-- 视频播放节点 -->
+
+                        <div ng-if="item.isPlayNode == true" class="childNode" ng-show="item.isShowNode" align="left" >
+                            <i ng-click="playNodeClick(item,it,widthV,heightV)" class="fa" ng-repeat="it in item.vidoNode" clicked="{{ it != item.isSelected ?false :true}}" type="{{it === item.sumStudyTime?'in': it < item.sumStudyTime?'after':'befor'}}" >{{it}}</i>
+                        </div>
+                        <div ng-if="item.isTest == true"  class="childNode"  align="left" >
+                            <a ng-click="goTestPage(item)" class="fa" >{{item.text}}</a>
+                        </div>
+                    </li>
+                    <li style="height:3em;">
+
+                    </li>
+                </ul>
+        </div>
+    </div>
+    <input id="widthV" type="hidden" ng-model="widthV" />
+    <input id="heightV" type="hidden" ng-model="heightV" />
+</div>
+
+<script >
+    $(function(){
+        $(".container").height($(window).height());
+        $(".container .body").height($(window).height() - $(".container .img").height());
+        //视频大小宽度
+        $("#widthV").val($(window).width());
+        $("#heightV").val($(".container .img").height());
+
+        $(".childNode > i[type=in]").click();
+
+       var setInt = setInterval(function(){
+            if ( polyvId ) {
+                clearInterval(setInt);
+                playVido(polyvId,$(window).width(),$(".container .img").height());
+            }
+        },500);
+
+        $(window).resize(function(){
+            $(".container").height($(window).height());
+            $(".container .body").height($(window).height() - $(".container .img").height());
+            $("video,#plv_container").width($(this).width());
+            $("#playbutton").css({left:$(window).width()/2 -$("#playbutton").width()/2,top:$(".container .img").height()/2 - $("#playbutton").height()/2 });
+        }).resize();
+    });
+
+
+
+</script>

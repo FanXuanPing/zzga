@@ -1,0 +1,205 @@
+/**
+  css基础文件 日历组件样式
+**/
+.e-calender {
+    float: left;
+   display: inline-block;
+   border:1px solid #efefef;
+   position: relative;
+    margin:0px;
+    padding:0px;
+}
+
+.e-calender div {
+    margin:0px;
+    padding:0px;
+}
+
+.e-calender .e-calender-title {
+    width:100%;
+    height:36px;
+    background-color: #9988cf;
+}
+
+.e-calender .e-calender-title > i {
+   float: left;
+   display: inline-block;
+   width:24px;
+   height:24px;
+   border-radius: 50%;
+   line-height: 24px;
+   text-align: center;
+   font-size:12px;
+   color:#fff;
+   cursor:pointer;
+   margin:8px 5px;
+    background-color: #ff6600;
+    transition: all 0.1s;
+    -moz-transition: all 0.1s; /* Firefox 4 */
+    -webkit-transition: all 0.1s; /* Safari 和 Chrome */
+    -o-transition: all 0.1s;
+}
+
+.e-calender .e-calender-title > span {
+    float:left;
+    display: inline-block;
+    width:220px;
+    height:24px;
+    margin:8px 0px;
+    line-height: 24px;
+    font-size:16px;
+    color: #fff;
+    text-align: center;
+    cursor:pointer;
+    background-color: #ff6600;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s; /* Firefox 4 */
+    -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+    -o-transition: all 0.5s;
+}
+
+.e-calender .e-calender-title > span:hover {
+    cursor:pointer;
+    background-color: #ff6600;
+}
+
+.e-calender .e-calender-title > i:hover {
+  background-color: #ff6600;
+}
+
+.e-calender .e-calender-body {
+    display: inline-block;
+    position: relative;
+    width:100%;
+    height:250px;
+    overflow:hidden;
+}
+
+.e-calender .e-calender-body ul, .e-calender .e-calender-dayText ul {
+    display: inline-block;
+    position: relative;
+    margin: 0px;
+    padding:0px;
+    list-style: none;
+}
+
+.e-calender .e-calender-body ul li,.e-calender .e-calender-dayText ul li {
+    display: inline-block;
+    position: relative;
+    float:left;
+    width:14.28%;
+}
+
+
+.e-calender .e-calender-body ul li,.e-calender .e-calender-dayText ul li  {
+    width:24px;
+    height:24px;
+    border-radius: 50%;
+    color:#333;
+    background-color: transparent;
+    line-height: 24px;
+    text-align: center;
+    font-size:12px;
+    font-family: "微软雅黑";
+    font-weight: 500;
+    margin:2px 8px;
+    cursor:pointer;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s; /* Firefox 4 */
+    -webkit-transition: all 0.3s; /* Safari 和 Chrome */
+    -o-transition: all 0.3s;
+}
+
+
+.e-calender .e-calender-body ul li.e-calender-aM ,.e-calender .e-calender-body ul li.e-calender-bM {
+    color:#ccc !important;
+}
+
+.e-calender .e-calender-body ul li[isSelected=true] {
+    color:#fff !important;
+    background-color:#ff6600 !important;
+}
+
+.e-calender .e-calender-body ul li:hover {
+    border-radius: 50%;
+    background-color: #efefef;
+}
+
+.e-calender-body .e-calender-self,.e-calender-body .e-calender-after,.e-calender-body .e-calender-before {
+    display: inline-block;
+    position: absolute;
+    top:35px;
+    width:100%;
+    background:#fff;
+}
+
+.e-calender-yearModel-next,.e-calender-yearModel-self,.e-calender-yearsModel-next,.e-calender-yearsModel-self {
+    display: inline-block;
+    position: absolute;
+    top:0px;
+    width:250px;
+    height:250px;
+    background:#fff;
+}
+
+.e-calender-yearModel-self, .e-calender-yearsModel-self {
+    left:0px;
+}
+
+
+.e-calender-yearModel-next ,.e-calender-yearsModel-next{
+    left:250px;
+}
+
+.e-calender-body .e-calender-self {
+    left:0px;
+}
+
+
+.e-calender-body .e-calender-after {
+    left:250px;
+}
+
+.e-calender-body .e-calender-before {
+  left:-250px;
+ }
+
+li.e-calender-yearLi {
+    width:51px !important;
+    height:51px !important;
+    line-height: 51px !important;
+    margin-right:16px !important;
+    margin-left:16px !important;
+}
+
+li.e-calender-yearLi:hover {
+    background-color:#efefef;
+}
+
+.e-calender-monthModel {
+    position: absolute;
+    z-index:10;
+    background: #fFffff;
+}
+
+.e-calender-yearModel {
+    position: absolute;
+    top:0px;
+    left:0px;
+    background: #ffffff;
+    width:250px;
+    height:250px;
+    display: none;
+    z-index: 8;
+}
+
+.e-calender-yearsModel {
+    position: absolute;
+    top:0px;
+    left:0px;
+    background: #ffffff;
+    width:250px;
+    height:250px;
+    display: none;
+    z-index: 5;
+}

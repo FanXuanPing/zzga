@@ -1,0 +1,8 @@
+{
+	"message": {
+		"code": "12", 
+		"jsMethod": "checkPersonFace()",
+		"url": "js" 
+	},
+	"flag": true
+}

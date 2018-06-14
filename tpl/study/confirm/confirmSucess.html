@@ -1,0 +1,139 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：确认订单、推送学时页面
+-->
+<style >
+
+    body {
+        background: #fff;
+    }
+
+    header > a {
+        position: absolute !important;
+        left:5% !important;
+        color:#fff !important;
+        font-size:1.8em !important;
+    }
+
+    .
+
+    .container {
+        height:100% !important;
+        width:100%;
+        margin:0px;
+        border:0px;
+        border-radius:0px;
+        overflow:auto;
+    }
+
+    .container > .title {
+        font-size:0.7em;
+        width:90%;
+        margin:0.6em 5%;
+    }
+
+    .container > .body {
+        display:inline-block;
+        height:100%;
+        background:#eee;
+        overflow:auto;
+    }
+
+    .imgList {
+        width:95%;
+        height:100% !important;
+        margin:0.8em 2.5%;
+    }
+
+    .body {
+        height:100%;
+
+    }
+
+    .body ul li {
+        border:0px;
+    }
+
+    .imgList li {
+        display:inline-block;
+        float:left;
+        width:46% !important;
+        height:auto !important;
+        margin:0.5em 2.5%;
+        background: transparent !important;
+        border:0px;
+        margin-left:0px;
+    }
+
+    .imgList li:nth-child(odd) {
+        margin-right:2.5%;
+        margin-left:2.5%;
+    }
+
+    .imgList li > img {
+        height:10em;
+        width:100%;
+    }
+
+    .imgList li >span {
+        display:inline-block;
+        width:100%;
+        text-align: center;
+        font-size:0.7em;
+    }
+
+    .btnDiv {
+        width:100%;
+        position: fixed;
+        bottom:3em;
+
+    }
+
+    .btnDiv >a  {
+        border:1px solid #008ef5;
+        color:#008ef5;
+        background:#fff;
+        border-radius: 3em;
+        height:3em;
+        font-size: 1.2em;
+        padding:0.8em 1em;
+        display:inline-block;
+    }
+
+    .btnDiv >a.btn {
+        color:#fff;
+        background:#008ef5;
+        margin-left:2em;
+    }
+
+    .container {
+        background:url(img/h5/sucess.jpg) ;
+        background-color:#fff;
+        background-repeat: no-repeat;
+        background-position: center 20%;
+    }
+
+    header >a > label {
+        font-size:0.5em !important;
+        position: relative;
+        left:1em;
+        top: -0.3em;
+    }
+</style>
+<div class="wrapper-md" ng-controller="ConfirmSuccessController">
+    <header align="center" >
+        <a><i class="fa fa-angle-left" ng-click="go()"></i><label ng-click="goback()">关闭</label></a><span>推送成功</span>
+    </header>
+    <div class="container">
+        <div ></div>
+    </div>
+</div>
+<script >
+
+    $(function(){
+        $(".container").height($(window).height() - $("header").height());
+        // $(".container > .body ").height($(window).height() - ($("header").height()));
+    })
+
+</script>

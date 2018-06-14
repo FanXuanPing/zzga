@@ -1,0 +1,32 @@
+{
+    "message": {
+        "cattype": [
+            {
+                "catypeId": "1201",
+                "catypeName": "客运驾驶员继续教育"
+            }
+        ],
+        "plan": [
+            {
+                "exceedTime": "1",
+                "isFace": "1",
+                "planName": "客运驾驶员继续教育",
+                "showImage": "/u/images/planIcon/12904.jpg",      
+                "lastPlanCode": "0",
+                "registerFaceImage": "img/b12.jpg",
+                "lastCourseName": "",
+                "catypeId": "1201",
+                "faceTime": "60",
+                "targetStudyTime": "24",
+                "personPlanId": "10000314275",
+                "catypeName": "客运驾驶员继续教育",
+                "notes": "课程描述",
+                "planStatus": "3",
+                "lastChapterName": "",
+                "lastChapterId": "0",
+                "nowStudyTime": "0"
+            }
+        ]
+    },
+    "flag": true
+}

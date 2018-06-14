@@ -1,0 +1,31 @@
+<!--
+	作者：赵洋
+	时间：2017-02-16
+	描述：微信公众号进来的主页
+-->
+<style>
+	.loadding{
+		position:fixed;
+		width:100vw;
+		height:100vh;
+		backgroundColor:#FFFFFF;
+		text-align:center;
+		top:0;
+		left:0;
+		z-index:999
+	}
+	
+	.loaddingImg{
+		margin-top:20%
+	}
+	
+	.loaddingMsg{
+		margin-top:10%
+	}
+</style>
+<div class='loadding' id='loadding' ng-controller="wxOAuthController">
+<!--开始微信授权-->
+	<img class='loaddingImg' src='img/ajax-loading.gif'/>
+	<div class="loaddingMsg" >获取用户信息中请等待...</div>
+	
+</div>

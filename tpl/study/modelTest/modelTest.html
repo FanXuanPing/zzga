@@ -1,0 +1,526 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：测试课习题练习页面
+-->
+<style >
+
+	body {
+		background: #fff;
+	}
+
+	header > a {
+		position: absolute;
+		left:5%;
+		color:#fff;
+		font-size:1.8em;
+	}
+
+	.container {
+		width:100%;
+		margin:0px;
+		border:0px;
+		border-radius:0px;
+	}
+
+	.container .img {
+		border:0px;
+		height:15em;
+	}
+
+	.body {
+		height:100%;
+		overflow:hidden;
+		padding-bottom:3em;
+		margin-bottom:3em;
+	}
+
+	.body  ul li {
+		width:100%;
+		border-bottom:1px #dedede solid;
+		font-size:1.2em;
+		color:#333;
+		font-weight: 300;
+		position:relative;
+		display:block;
+		height:auto;
+	}
+
+	.body  ul li > label {
+		margin:0 2.5%;
+		width:95%;
+		font-weight: 500;
+		line-height:3em;
+		height:auto;
+		display:inline-block;
+		overflow:inherit;
+		padding:0.3em 0;
+		position: relative;
+		/*text-overflow: ellipsis;*/
+	}
+
+	.body  ul li > label > span {
+		display:inline-block;
+		width:80%;
+		overflow:inherit;
+		white-space: pre-wrap;
+		line-height:150% !important;
+		position: relative;
+		top:0.2em;
+		left:3em;
+		color:#333;
+	}
+
+	.body  ul li >label> a {
+		display:inline-block;
+		position: relative;
+		font-size:2em;
+		font-weight: 100;
+		color:#c3c3c3;
+		transform: translate(0,-50%);
+		height:2em;
+		line-height:2em;
+		margin-right:0.5em;
+	}
+
+	.body  ul li > label>  a.title {
+		border:1px solid #008ef5;
+		font-size:0.7em;
+		color:#008ef5;
+		padding:0 0.5em;
+		top:2em;
+
+		position: absolute;
+		border-radius: 1em;
+	}
+
+
+	.body  ul li >label>  a.icon {
+		position: absolute;
+		background: #cccccc;
+		font-size:0.9em;
+		color:#fff;
+		border-radius: 50%;
+		height:2em;
+		width:2em;
+		text-align: center;
+		top:50%;
+		transform: translate(0,-50%);
+	}
+
+	.body ul li.selectLi  > label>  a.icon{
+		background:#008ef5 !important;
+		color:#FFF !important;;
+	}
+
+	.body ul li.rightLi > label>  a.icon{
+		background:#38ba9b !important;
+		color:#FFF !important;
+	}
+
+	.body ul li.rightLi > label {
+		color:#38ba9b;
+	}
+
+	.body ul li.errorLi > label>  a.icon{
+		background:#ff4242 !important;
+		color:#FFF !important;
+	}
+
+	.body ul li.errorLi {
+		background:#eee;
+	}
+
+	.body ul li.errorLi > label {
+		color:#ff4242;
+	}
+
+	.body ul li.rightLi {
+		background:#eee;
+	}
+
+
+	.body  ul li >label > .text {
+		margin-left:0em;
+		position: relative;
+		font-weight: 100 !important;
+		top:-0.05em;
+	}
+
+	.ask {
+		margin-top:3em;
+		position: relative;
+		height:auto;
+		margin-bottom:5em;
+	}
+
+	.ask > label {
+		position: absolute;
+		top:-1em;
+		display:inline-block;
+		background: #008ef5;
+		padding:0.4em 0.6em;
+		color:#fff;
+		font-size:0.8em;
+		left:1em;
+		border-radius:0.2em;
+	}
+
+	.ask > div {
+		background: #eeeeee;
+		height:auto;
+		padding:2em 0.8em;
+		padding-bottom:1.5em;
+	}
+
+	.ask .text .sucessTitle {
+		color:#38ba9b;
+		font-size:1.2em;
+	}
+
+	.sucessText {
+		color:#333333;
+		font-size:0.9em;
+	}
+
+	footer {
+		height:25em;
+		position: fixed;
+		background: #eee;
+		width:100%;
+		bottom:-22em;
+		left:0;
+		transition:  all 2s;
+		-webkit-transition:  all 2s;
+		z-index:101;
+	}
+	footer > a {
+		background: #38ba9b;
+		color:#fff;
+		font-size:1.1em;
+		padding:0em 0.8em;
+		position: absolute;
+		height:2em;
+		line-height:2.1em;
+		top:0.3em;
+		border-radius: 1em;
+		left:5%;
+		font-weight: 200 !important;
+		overflow:hidden;
+	}
+
+	.next {
+		left:auto;
+		right:5%;
+	}
+
+	.btn_submit {
+		display:inline-block;
+		margin:2em 25%;
+		background:#eee;
+		color:#ccc;
+		font-size:1.3em;
+		width:50%;
+		padding:0.8em 3em;
+		border-radius: 1.5em;
+		text-align: center;
+	}
+
+	footer label {
+		line-height:3em;
+	}
+
+	.btn_submit.sure {
+		background:#00a8f3;
+		color:#fff;
+	}
+
+	header {
+		position: relative;
+	}
+
+	header > a.close {
+		left:auto !important;
+		right:5% !important;
+		color:#fff !important;
+		font-size:0.8em !important;
+		opacity:1 !important;
+		top:50% !important;
+		font-weight:100 !important;
+		transform: translate(0%,-50%) !important;
+		font-family: "微软雅黑" !important;
+	}
+
+	header > span {
+		position: relative;
+		top:10px;
+		font-size:0.8em;
+	}
+
+	.icon-clock {
+		position: absolute;
+		top:2px;
+		left:50%;
+		transform: translate(-50%,0) !important;
+	}
+
+	.footerBtn {
+		position: absolute;
+		top:-12px;
+		left:50%;
+		transform: translate(-50%,0) !important;
+		background-img:url(img/upFootBtn.png);
+		background-repeat: no-repeat;
+		background-color:#eee;
+		width:3em;
+		height:15px;
+		z-index:100000;
+		border-radius: 4px;
+		transition:  all 2s;
+		-webkit-transition:  all 2s;
+	}
+
+	.footerBtn i {
+		font-size:1.2em;
+		position: relative;
+		top:-2px;
+	}
+
+	.footerTitle,.bodyTitle {
+		height:3em;
+		font-size:1em;
+	}
+	.footerTitle .right,.bodyTitle .left,.bodyTitle .right {
+		display:inline-block;
+		position: relative;
+		float:right;
+		width:6em;
+		color:#38ba9b;
+		text-align: left;
+	}
+
+	.bodyTitle .left {
+		float:left;
+		width:8em;
+	}
+
+	.bodyTitle .right {
+		display:inline-block;
+		width:10em;
+		height:2.4em;
+		border-radius: 5em;
+		overflow:hidden;
+		background:#cccccc;
+		font-size:0.6em;
+		position: relative;
+		top:5px;
+		right:10px;
+	}
+
+	.bodyTitle .right > a {
+		display:inline-block;
+		width:50%;
+		float:left;
+		height:2.4em;
+		line-height:2.4em;
+		text-align: center;
+		color:#fff;
+	}
+
+	.bodyTitle .right > a.active {
+		background:#008ef5;
+
+	}
+
+	.footerTitle .left {
+		display:inline-block;
+		position: relative;
+		float:left;
+		color:#666666;
+		width:4em;
+		line-height:3em;
+
+	}
+
+	.error {
+		display:inline-block;
+		margin-left:1em;
+		color:#ff4242;
+	}
+
+	.footerBody {
+		height:15em;
+
+	}
+
+	footer.open,.footerBtn.open {
+		background:#fff !important;
+	}
+
+	.maskDiv {
+		width:100%;
+		height:100%;
+		position: absolute;
+		top:0px;
+		left:0px;
+		z-index:100;
+		background:rgba(0,0,0,0.4);
+		display:none;
+	}
+
+	.bodyMain {
+		width:100%;
+		height:22em;
+		overflow:auto;
+		border-top:1px solid #cccccc
+	}
+
+	.bodyMain ul{
+		width:97%;
+		height:100%;
+		margin:1.5%;
+		margin-top:0px;
+		margin-bottom:0px;
+		padding:0;
+	}
+
+	.bodyMain ul li {
+		display:inline-block;
+		float:left;
+		border:1px solid #ccc;
+		width:3em;
+		height:3em;
+		border-radius: 50%;
+		font-size:1em;
+		color:#ccc;
+		text-align: center;
+		line-height:3em;
+		margin:0.6em 0.4em;
+	}
+
+	.bodyMain ul li.rightIcon {
+		background:#d7f1eb;
+		border-color:#5ac6ac;
+		color:#5ac6ac;
+	}
+
+	.bodyMain ul li.errorIcon {
+		background:#ffd9d9;
+		border-color:#ff4242;
+		color:#ff4242;
+	}
+</style>
+<div class="wrapper-md" ng-controller="modelTestController">
+	<header align="center" ng-if="pageType == 0 && examType == 0">
+		<a ng-click="goBack()"><i class="fa fa-angle-left"></i></a><span>{{mm + ":" + ss}}</span><a class="close" ng-click="handExam()">交卷</a>
+		<i class="fa icon-clock" ></i>
+	</header>
+	<header align="center" ng-if="pageType == 1 && examType == 0">
+		<a ng-click="goBack()"><i class="fa fa-angle-left"></i></a>
+		<span>错题集</span>
+	</header>
+	<header align="center" ng-if="examType == 1">
+		<a ng-click="goBack()"><i class="fa fa-angle-left"></i></a>
+		<span>顺序练习</span>
+	</header>
+	<header align="center" ng-if="examType == 2">
+		<a ng-click="goBack()"><i class="fa fa-angle-left"></i></a>
+		<span>随机练习</span>
+	</header>
+	<div class="container">
+		<div ng-switch="nowTest.contentType">
+			<div class="img" ng-switch-when="1">
+				<img ng-src="{{nowTest.img}}"  />
+			</div>
+			<div class="img" ng-switch-when="2">
+				<video ng-src="{{nowTest.embed}}" controls="controls"></video>
+			</div>
+		</div>
+		<div class="body" >
+			<ul>
+				<li>
+					<label>
+						<a class="title" ng-switch="nowTest.examType">
+							<span ng-switch-when="0">单选</span>
+							<span ng-switch-when="1">多选</span>
+							<span ng-switch-when="3">判断</span>
+						</a>
+						<span>{{nowTest.content}}</span>
+					</label>
+				</li>
+				<!--选项-->
+				<li ng-repeat="item in nowTest.detail" isAnswer="{{item.isAnswer}}" ng-click="clickAnswerOption('answerOption{{$index}}')" id="answerOption{{$index}}" name="answerOptions" ng-if="!isShowAnswer">
+					<label >
+						<a class="icon">{{optionLetter[$index]}}</a>  <span class="text">{{item.optionDesc}}</span>
+					</label>
+				</li>
+				<li ng-class="{'rightLi':(item.isAnswer == 1),'errorLi':(item.isAnswer==0 && item.selectLi)}" ng-repeat="item in nowTest.detail" ng-if="isShowAnswer">
+					<label  >
+						<a class="icon">
+							<i class="fa fa-check" ng-if="item.isAnswer == '1'"></i>
+							<i class="fa fa-close" ng-if="item.isAnswer == '0' && item.selectLi"></i>
+							<a class="icon" ng-if="item.isAnswer == '0' && !item.selectLi">{{optionLetter[$index]}}</a>
+						</a>
+						<span class="text">{{item.optionDesc}}</span>
+					</label>
+				</li>
+			</ul>
+
+			<a  id="submitButton" class="btn_submit" ng-show="(!isShowAnswer) && (nowTest.examType == 1)" ng-click="clickSubmitButton()">提  交</a>
+		</div>
+		<div class="ask" ng-if="isShowAnswer">
+			<label>正确答案</label>
+			<div class="text" >
+				<label class="sucessTitle">{{rightAnswer}}</label>
+				<label class="sucessText" >{{nowTest.explainContent}}</label>
+			</div>
+		</div>
+	</div>
+	<div class="maskDiv" ></div>
+	<footer align="center" >
+	  	<span class="footerBtn"><i class="fa fa-angle-up"></i></span>
+	  	<div class="footerTitle" >
+		  <span class="left" ><label>{{nowTestNumber+1}}/{{totalCount}}</label></span>
+		  <span class="right" ><label>对:{{rightCount}}</label><label class="error">错:{{errorCount}}</label></span>
+	  	</div>
+		<div class="footerBody" >
+			<div class="bodyTitle" >
+				<span class="left" ><label>正确:{{rightCount}}</label><label class="error">错误:{{errorCount}}</label></span>
+				 <span class="right" >
+					 <a ng-class="{true: 'active', false: ''}[!isShowErrorList]" ng-click="showErrorList(false)">全部试题</a>
+					 <a ng-class="{true: 'active', false: ''}[isShowErrorList]" ng-click="showErrorList(true)">全部错题</a>
+				 </span>
+			</div>
+			<div class="bodyMain" >
+				<ul ng-show="!isShowErrorList">
+					<li ng-repeat="item in testList" ng-class="{true: 'rightIcon', false: 'errorIcon'}[item.examInfo.isRight]" ng-click="jumpTest($index)">
+						<a>{{$index+1}}</a>
+					</li>
+				</ul>
+				<ul ng-show="isShowErrorList">
+					<li ng-repeat="item in testList" class="errorIcon" ng-if="item.examInfo.isRight == false" ng-click="jumpTest($index)">
+						<a>{{$index+1}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</footer>
+	<script >
+		$(".footerBtn").click(function(){
+			if ( $(".footerBtn").hasClass("open") == true ) {
+				$(".footerBtn").removeClass("open");
+				var h = $("footer").height() - $(".footerTitle").height();
+				$("footer").animate({bottom:-h},200).removeClass("open");
+				$(".footerTitle").show();
+				$(".maskDiv").hide();
+			} else {
+				$(".footerBtn").addClass("open");
+				$("footer").animate({bottom:0},200).addClass("open");
+				$(".footerTitle").hide();
+				$(".maskDiv").show();
+			}
+
+		});
+	</script>
+</div>

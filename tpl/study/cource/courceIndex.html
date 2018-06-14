@@ -1,0 +1,384 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：课程页面
+-->
+<style>
+    .body ul li > label.add {
+        overflow:hidden;
+        white-space: pre-wrap !important;
+        text-overflow:clip !important;
+        line-height: 140% !important;
+        margin-top:0.5em;
+    }
+
+    .body ul li {
+        height:3.2em;
+        line-height:3.2em;
+    }
+
+    .body ul li > label{
+        height:3.2em;
+        line-height:3.2em;
+        color:#333333;
+    }
+    .body ul li > label > span {
+        width:5em;
+        display:inline-block;
+        height:3.2em;
+    }
+
+    .body ul li > label > a {
+        position: relative;
+        left:1em;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border-radius: 0;
+    }
+
+    .btn_submit {
+        display:inline-block;
+        margin:2em 25%;
+        background:#eee;
+        color:#ccc;
+        font-size:1.1em;
+        width:50%;
+        padding:0.8em 3em;
+        border-radius: 1.5em;
+        text-align: center;
+    }
+
+    .btn_submit.sure {
+        background:#00a8f3;
+        color:#fff;
+    }
+
+    .bottomDiv {
+        margin-top:2em;
+    }
+
+    .maskBg {
+        color:#fff;
+        display:inline-block;
+        position: absolute;
+        top:0px;
+        left:0px;
+        z-index:1000;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        font-size:1.2em;
+        text-align: center;
+    }
+
+    .spinner {
+        margin: 200px auto;
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    .container1 > div, .container2 > div, .container3 > div {
+        width: 16px;
+        height: 16px;
+        background-color: #00a8f3;
+
+        border-radius: 100%;
+        position: absolute;
+        -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+        animation: bouncedelay 1.2s infinite ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .spinner .spinner-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container2 {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+    }
+
+    .container3 {
+        -webkit-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+    }
+
+    .circle1 { top: 0; left: 0; }
+    .circle2 { top: 0; right: 0; }
+    .circle3 { right: 0; bottom: 0; }
+    .circle4 { left: 0; bottom: 0; }
+
+    .container2 .circle1 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .container3 .circle1 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .container1 .circle2 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .container2 .circle2 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .container3 .circle2 {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .container1 .circle3 {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .container2 .circle3 {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .container3 .circle3 {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .container1 .circle4 {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .container2 .circle4 {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .container3 .circle4 {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0.0) }
+        40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        } 40% {
+              transform: scale(1.0);
+              -webkit-transform: scale(1.0);
+          }
+    }
+
+    .textbg {
+        position: relative;
+        top:-180px;
+    }
+
+    header > a {
+        position: absolute !important;
+        left:5% !important;
+        color:#fff !important;
+        font-size:1.8em !important;
+    }
+
+    header > a.close {
+        left:auto !important;
+        right:5% !important;
+    }
+
+</style>
+<div class="wrapper-md" ng-controller="CourceIndexController">
+    <header align="center" >
+        <!--<a class="btnA"  ng-click="close()" ><i class="fa fa-angle-left " ></i></a>-->
+        <span>审验学习</span><a class="close"><i class="fa fa-close"></i></a>
+    </header>
+    <div class="container">
+        <div class="body" >
+            <ul>
+                <li>
+                    <label>
+                        <span>姓名：</span>
+                        <a ng-bind="realName"></a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>证件号码：</span>
+                        <a ng-bind="idCard"></a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>驾照类型：</span>
+                        <a ng-bind="drivingLicense"></a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>手机号：</span>
+                        <a ng-bind="phone"></a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>档案编号：</span>
+                        <a ng-bind="fileNum"></a>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span>审验有效期：</span>
+                        <a ng-bind="checkDate"></a>
+                    </label>
+                </li>
+                <!--<li>-->
+                    <!--<label>-->
+                        <!--<span>违法记录：</span>-->
+                        <!--<a>{{lllegalRecord}}</a>-->
+                    <!--</label>-->
+                <!--</li>-->
+                <li>
+                    <label>
+                        <span>说明：</span>
+                        <a ng-bind="message"></a>
+                    </label>
+                </li>
+                
+                <li>
+                    <label>
+                        <span>累计记分：</span>
+                        <a>
+                            <select ng-model="points" style="width: 200px;">
+                                <option value="0" selected="selected">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </a>
+                    </label>
+                </li>
+                
+                <li>
+                    <label>
+                        <span>业务受理地：</span>
+                        <a>
+                            <select ng-model="areaCode" style="width: 200px;">
+                                <option value="">请选择</option>
+                                <option value="320500">苏州市车管所</option>
+                                <option value="320502">姑苏交警大队</option>
+                                <option value="320504">园区交警大队</option>
+                                <option value="320505">虎丘交警大队</option>
+                                <option value="320506">吴中交警大队</option>
+                                <option value="320507">相城交警大队</option>
+                                <option value="320501">度假区大队金庭中队</option>
+                                <option value="320503">车管所观山考验场</option>
+                                <option value="320581">常熟车管所</option>
+                                <option value="320582">张家港车管所</option>
+                                <option value="320583">昆山周市机动车驾考中心</option>
+                                <option value="320585">太仓车管所</option>
+                                <option value="320584">吴江车管所</option>
+                            </select>
+                        </a>
+                    </label>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="bottomDiv" align="center" >
+        <a class="btn_submit sure" ng-click="doInfoConfirm()">信息确认</a>
+    </div>
+    
+    <!-- 模态框，显示公告 begin -->
+    <div id="modalNoticeDiv" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f0f3f4;">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                    <h4 class="modal-title">苏州市机动车驾驶人互联网审验学习公告</h4>
+                </div>
+                <div class="modal-body">
+                    <p>一、  苏州市机动车驾驶人互联网审验学习的适用情形</p>
+                    <p>申请人所持驾驶证核发地为苏州市交通警察支队，且持有大中型客货车准驾车型的驾驶证在一个记分周期内累计积分达到1至8分的，除本条第二款规定以外的，可以按照规定申请参加互联网学习</p>
+                    <p>具有下列情形之一的，应当进行现场审验：</p>
+                    <p>（一） 对在一个记分周期内累计积分达到9至11分的大中型客货车驾驶人<br/>（二） 校车驾驶人<br/>（三） 持有其他准驾车型驾驶证发生交通事故造成人员死亡承担同等以上责任未被吊销驾驶证的驾驶人
+审验、学习时应当参加不少于三小时的道路交通安全法律法规、交通安全文明驾驶、应急处置等知识学习，并接受交通事故案例警示教育</p>
+                    <p>二、  审核申请人参加机动车驾驶证审验内容包括：</p>
+                    <p>（一） 道路交通安全违法行为、交通事故处理情况<br/>（二） 申请人身体条件情况<br/>（三） 道路交通违法行为记分及记满12分后学习和考试情况
+不符合以上规定和要求和条件的，以及未按照规定参加学习、教育和考试的，不予通过审验</p>
+                    <p>三、  其他注意事项</p>
+                    <p>（一）申请机动车驾驶证期满换证等业务的同时符合审验学习要求的，在审验同时办理期满换证业务，请注意查看驾驶证有效期止。<br/>（二）持有大中型客货车驾驶证的驾驶人在一年实习期内记6分以上但未达到12分的，实习期限延长一年，在延长的实习期内再次记6分以上但未达到12分的，注销其实习期的准驾车型驾驶资格，无需参加审验</p>
+                </div>
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" class="btn btn-primary" onclick="onCloseNoticeDialog()">关&nbsp;&nbsp;闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框，显示公告 end -->
+    
+    <div id="maskDivId" class="maskBg" ng-show="isShowMask" style="display: none;">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+
+        </div>
+        <div class="textbg" >正在提交中...</div>
+    </div>
+    <script type="text/javascript" >
+        $(function(){
+
+        })
+        window.unonload = function(){ window.location = BACKURL};
+        
+        /**
+         * 关闭公告
+         */
+        function onCloseNoticeDialog() {
+            $("#modalNoticeDiv").modal("hide");
+            $("#maskDivId").css("display", "none");
+        };
+    </script>
+</div>

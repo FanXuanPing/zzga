@@ -1,0 +1,96 @@
+<!--
+	作者：TongAn
+	时间：2018-3-06
+	描述：审验学习承诺书
+-->
+<style >
+
+	body {
+		background: #fff;
+	}
+
+	header > a {
+		position: absolute;
+		left:5%;
+		color:#fff;
+		font-size:1.8em;
+	}
+*{
+	padding: 0;
+	margin: 0;
+}
+.wrapper-md{
+	padding: 0.4rem;
+	background-color: #FFF;
+}
+.letterDiv >h5{
+	text-align: center;
+	font-size: 0.5rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	margin: 0;
+}
+.letterDiv >p{
+	min-height: 0.28rem;
+	line-height: 0.28rem;
+}
+.letterDiv >label{
+	text-indent: 0.5rem;
+}
+
+.letterCim{
+	width: 59%;
+	height: 1rem;
+	background-color: #007FBB;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 1rem;
+	border: none;
+	border-radius: 5px;
+}
+</style>
+<div class="wrapper-md" ng-controller="letterOfComController">
+	
+	<div class="letterDiv">
+		<h5>审验学习承诺书</h5>
+		<div>
+			<label>
+				<span>姓名:</span>
+				<a ng-bind="name"></a>
+			</label>
+			<label>
+				<span>准驾车型:</span>
+				<a ng-bind="carType"></a>
+			</label>
+			<label>
+				<span>记分:</span>
+				<a ng-bind="score"></a>
+			</label>
+			<label>
+				<span>档案编号:</span>
+				<a ng-bind="archNo"></a>
+			</label>
+			<label>
+				<span>身份证号:</span>
+				<a ng-bind="idCard"></a>
+			</label>
+		</div>
+		
+		<label>
+			本人因道路交通违法，驾驶证已被记分但不足12分，自愿选择郑州交警支队网上教育平台接受警示教育和处罚。我本人不是（是）重点管理对象车辆（公路客运、公交客运、旅游客运、校车、货车、危险品运输车辆等六类车）驾驶员。如果提供虚假信息导致任何后果，本人承担全部责任。
+		</label>
+		<label>今后，一定做到遵法行驶，并作如下保证：</label>
+		<label>一、认真学习《道路交通安全法》、公安部139号令《机动车驾驶证申领和使用规定》及公安部124号令《机动车登记规定》等各项交通法律法规、条令，进一步提高自己的交通安全意识。</label>
+		<label>二、驾驶机动车上路行驶，遵守各项交通法律法规及规章制度，文明驾车，礼貌行驶，按交通信号行驶。严禁酒后驾车、超员、超速、疲劳驾驶、强行超车等严重交通违法行为</label>
+		<label>三、自觉对驾驶的车辆进行例保检查，保证车辆处于最佳状态。发现有碍安全行车情况立即排除，消除隐患，确保行车安全。</label>
+		<label>四、积极参加公安交通管理部门组织的道路交通安全教育活动，注重媒体关于道路交通安全知识的宣传，增强自身文明交通素质。</label>
+		
+		<div align="right"><span>驾驶人签字：</span><a ng-bind="name"></a></div>
+		<div align="right"><a ng-bind="regDate"></a></div>
+		
+		
+		<button class="letterCim"ng-click="confim();">确认</button>
+	</div>
+	
+	
+</div>

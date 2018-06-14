@@ -1,0 +1,7 @@
+{
+   "flag" : false,
+   "errorMessage" : {
+       "code" : "1",
+       "message": "车管所未找到您的信息，请先注册！"
+   }
+}

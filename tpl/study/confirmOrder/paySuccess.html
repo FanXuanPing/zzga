@@ -1,0 +1,459 @@
+<!--
+	作者：TongAn
+	时间：2017-2-21
+	描述：找回密码
+-->
+<style>
+	body {
+		background: #fff;
+	}
+	
+	header> a {
+		position: absolute;
+		left: 5%;
+		color: #fff;
+		font-size: 1.8em;
+	}
+	
+	header {
+		position: relative;
+	}
+	
+	#close {
+		left: auto !important;
+		right: 5% !important;
+		color: #fff !important;
+		font-size: 0.8em !important;
+		opacity: 1 !important;
+		top: 50% !important;
+		font-weight: 100 !important;
+		transform: translate(0%, -50%) !important;
+		font-family: "微软雅黑" !important;
+	}
+	
+	header .quxiao {
+		font-weight: bolder;
+		right: auto !important;
+		left: 5% !important;
+		color: #fff !important;
+		font-size: 0.8em !important;
+		opacity: 1 !important;
+		top: 50% !important;
+		font-weight: 100 !important;
+		transform: translate(0%, -50%) !important;
+		font-family: "微软雅黑" !important;
+	}
+	
+	.container {
+		width: 100%;
+		margin: 0px;
+		border: 0px;
+		border-radius: 0px;
+	}
+	
+	.body {
+		height: 100%;
+		overflow: hidden;
+	}
+	
+	.body ul li {
+		width: 100%;
+		border-bottom: 1px #dedede solid;
+		font-size: 1.2em;
+		color: #333;
+		font-weight: 300;
+		position: relative;
+		display: block;
+		height: auto;
+	}
+	
+	.body ul li> label {
+		margin: 0 2.5%;
+		width: 95%;
+		font-weight: 500;
+		line-height: 3em;
+		height: auto;
+		display: inline-block;
+		overflow: inherit;
+		padding: 0.3em 0;
+		position: relative;
+		/*text-overflow: ellipsis;*/
+	}
+	
+	.body ul li> label> span {
+		display: inline-block;
+		width: 80%;
+		overflow: inherit;
+		white-space: pre-wrap;
+		line-height: 150% !important;
+		position: relative;
+		top: 0.2em;
+		left: 3em;
+		color: #333;
+	}
+	
+	.body ul li>label> a {
+		display: inline-block;
+		position: relative;
+		font-size: 2em;
+		font-weight: 100;
+		color: #c3c3c3;
+		transform: translate(0, -50%);
+		height: 2em;
+		line-height: 2em;
+		margin-right: 0.5em;
+	}
+	
+	.body ul li> label> a.title {
+		border: 1px solid #008ef5;
+		font-size: 0.7em;
+		color: #008ef5;
+		padding: 0 0.5em;
+		top: 2em;
+		position: absolute;
+		border-radius: 1em;
+	}
+	
+	.body ul li>label> a.icon {
+		position: absolute;
+		background: #cccccc;
+		font-size: 0.9em;
+		color: #fff;
+		border-radius: 50%;
+		height: 2em;
+		width: 2em;
+		text-align: center;
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+	
+	.body ul li.selectLi> label> a.icon {
+		background: #008ef5 !important;
+		color: #FFF !important;
+		;
+	}
+	
+	.body ul li.rightLi> label> a.icon {
+		background: #38ba9b !important;
+		color: #FFF !important;
+	}
+	
+	.body ul li.rightLi> label {
+		color: #38ba9b;
+	}
+	
+	.body ul li.errorLi> label> a.icon {
+		background: #ff4242 !important;
+		color: #FFF !important;
+	}
+	
+	.body ul li.errorLi {
+		background: #eee;
+	}
+	
+	.body ul li.errorLi> label {
+		color: #ff4242;
+	}
+	
+	.body ul li.rightLi {
+		background: #eee;
+	}
+	
+	.body ul li>label> .text {
+		margin-left: 0em;
+		position: relative;
+		font-weight: 100 !important;
+		top: -0.05em;
+	}
+	
+	.modify {
+		background-color: #fff;
+	}
+	
+	.modify ul {
+		padding: 0;
+		margin: 0;
+	}
+	
+	.modify ul li {
+		display: block;
+		height: 3em;
+		line-height: 3em;
+		padding: 0 0.8em;
+		border-bottom: 1px solid #eee;
+	}
+	
+	.modify ul li span {
+		float: right;
+		color: #999;
+	}
+	
+	.modify .changeImg {
+		width: 2em;
+		height: 2em;
+		vertical-align: middle;
+	}
+	
+	.modify input {
+		width: 100%;
+		height: 2.5em;
+		border: 1;
+		font-size: 1em;
+		font-family: "Microsoft YaHei";
+	}
+	
+	input::-webkit-input-placeholder {
+		color: #999;
+		font-weight: 300;
+	}
+	
+	.modify .code2 {
+		position: absolute;
+		top: 50%;
+		right: 2em;
+		margin-top: -1.1em;
+		display: block;
+		height: 2.2em;
+		width: 8em;
+		line-height: 2.2em;
+		color: #fff;
+		font-size: 1em;
+		font-family: "Microsoft YaHei";
+		background-color: #008ef5;
+		border-radius: 2.5em;
+		text-align: center;
+	}
+	
+	.modify .code3 {
+		position: absolute;
+		top: 50%;
+		right: 2em;
+		margin-top: -1.1em;
+		display: block;
+		height: 2.2em;
+		width: 8em;
+		line-height: 2.2em;
+		color: #555;
+		font-size: 1em;
+		font-family: "Microsoft YaHei";
+		background-color: #ddd;
+		border-radius: 2.5em;
+		text-align: center;
+	}
+	
+	.modify> ul> li:nth-child(1) {
+		height: 3.4em;
+		font-size: 1em;
+		line-height: 3.4em;
+	}
+	
+	.modify> ul> li:nth-child(2) {
+		height: 2.5em;
+		line-height: 2.5em;
+		font-size: 0.87em;
+	}
+	
+	.modify> ul> li:nth-child(3) {
+		height: 2.5em;
+		font-size: 0.87em;
+		line-height: 2.5em;
+	}
+	/*.modify input{
+		width:14.37em;
+		border: 1px solid black;
+		float: right;
+		text-align: right;
+	}*/
+	
+	.modify .himg {
+		width: 2.9em;
+		height: 2.9em;
+	}
+	
+	.maskbg {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, 0.6);
+		display: none;
+	}
+	/*相机文件按钮*/
+	
+	#cameraImg {
+		width: 90%;
+		height: 2.5em;
+		position: fixed;
+		bottom: 6.25em;
+		left: 5%;
+		text-align: center;
+		border-radius: 0.5em;
+		outline: none;
+		border: 0;
+		background-color: ffffff;
+	}
+	
+	#labOne {
+		position: fixed;
+		bottom: 6.25em;
+		left: 5%;
+	}
+	
+	#labTwo{
+		position: fixed;
+		bottom: 3.75em;
+		left: 5%;
+	}
+	
+
+	/*相机按钮*/
+	
+	#cameraBtn1 {
+		width: 90%;
+		height: 2.5em;
+		position: fixed;
+		bottom: 6.25em;
+		left: 5%;
+		text-align: center;
+		border-top-left-radius: 0.5em;
+		border-top-right-radius: 0.5em;
+		outline: none;
+		border: 0;
+		line-height: 2.5em;
+		background-color: ffffff;
+		color: #7f7f7f;
+		border-bottom: 1px solid #7f7f7f;
+	}
+/*	相册按钮*/
+	#cameraBtn2{
+		bottom: 3.75em;
+		width: 90%;
+		height: 2.5em;
+		position: fixed;
+		left: 5%;
+		text-align: center;
+		border-bottom-left-radius: 0.5em;
+		border-bottom-right-radius: 0.5em;
+		outline: none;
+		border: 0;
+		line-height: 2.5em;
+		background-color: ffffff;
+		color: #7f7f7f;
+	}
+	
+	/*取消  相机相册的选择*/
+	#qx{
+		width: 90%;
+		height:2.5em;
+		line-height: 2.5em;
+		text-align: center;
+		color: #7f7f7f;
+		border-radius: 0.5em;
+		position: fixed;
+		bottom: 0.5em;
+		left: 5%;
+		background-color: #FFFFFF;
+	}
+	
+	/*照片保存按钮*/
+	#keep {
+		width: 5em;
+		height: 3em;
+		display: block;
+		position:fixed ;
+		z-index: 9000;
+		right: 1em;
+		bottom: 1em;
+		color: #FFFFFF;
+		display: none;
+		text-align: center;
+		line-height: 3em;
+		background-color: #000000;
+	}
+	#keep1 {
+		width: 5em;
+		height: 3em;
+		display: block;
+		position:fixed ;
+		z-index: 9000;
+		right: 1em;
+		bottom: 1em;
+		color: #000000;
+		display: none;
+	}
+	.cropper-view-box > img{
+		display: none !important;
+	}
+	
+	/*修改个人昵称*/
+	#usename{
+		width: 80%;
+		height: 2.3em;
+		border: 0;
+		line-height: 2.3em;
+		float: right;
+		text-align: right;
+		resize: none;
+	}
+	
+	/*修改密码右箭头*/
+	.lef{
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		border-bottom: 2px solid #FFFFFF;
+		border-left: 2px solid #FFFFFF;
+		transform: rotate(45deg);
+		margin-top: 0.75em;
+		margin-right:1em ;
+	}
+	
+	.payDIv{
+		width: 100%;
+		height: 80vh;
+		color: crimson;
+		text-align: center;
+		font-size: 1em;
+	}
+	.payDIv img{
+		width: 30%;
+		height: 20%;
+		margin-top: 20%;
+	}
+	.payBtn{
+		width: 80%;
+		height: 2em;
+		background-color: #008ef5;
+		border-radius: 2em;
+		margin-top: 10%;
+		margin-left: 10%;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: 2em;
+		font-size: 1.5em;
+	}
+</style>
+<div class="wrapper-md" ng-controller="paySuccessController">
+	<header align="center">
+		<a class="quxiao" ng-click="cancel()"><span class="lef"></span></a><span>支付成功</span>
+	</header>
+	<div class="payDIv">
+		<img src="img/pays.png">
+		<div>您已支付成功</div>
+		<div class="payBtn" ng-click="cancel()">
+			开始学习
+		</div>
+	</div>
+
+	<script>
+		$(window).resize(function() {
+			$(".body").height($(window).height() - $("header").height() - $(".topQueryDiv").height() - 5);
+		}).resize();
+
+		 
+	</script>
+</div>
+                                               

@@ -1,0 +1,223 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：身份证验证
+-->
+<style>
+	html{
+		font-size: 100px;
+	}
+.wrapper-md{
+	position: relative;
+	
+}
+
+  
+      header {
+           display: inline-block;
+		    width: 100%;
+		    height: 1rem;
+		    z-index: 1000;
+		    float: left;
+		    background: #FFFFFF;
+		    border-bottom: 1px solid #CCCCCC;
+    }
+
+    header >div {
+           position: relative;
+		    text-align: center;
+		    width: 100%;
+		    font-size: 0.44rem;
+		    color: #000;
+		    height: 100%;
+		    line-height: 1rem;
+
+    }
+ header >div>span{
+ 	color:#3986f5 ;
+ 	float: left;
+ 	margin-left: 1em;
+ 	font-size: 0.44rem;
+ }
+ 
+ header >div>span>i {
+ 	font-size: 0.8em;
+    position: absolute;
+    top: 0.4rem;
+ }
+ .wrapper-md{
+ 	background-color: #F8F8F8;
+ 	height: 100vh;
+ }
+.idCardDiv > h5{
+	font-size: 0.3rem;
+	padding: 0.54rem 0.5rem;
+	text-align: center;
+	line-height: 1.5em;
+}
+
+.imagePage{
+	    font-size: 26px;
+    width: 4.36rem;
+    height: 2.76rem;
+     margin:auto; 
+    margin-bottom: 0.3rem;
+    border-radius: 5px;
+    position: relative;
+}
+.imagePage > div{
+        width: 1.2rem;
+    height: 1.2rem;
+    margin: auto;
+    position: absolute;
+    margin-top: 1em;
+    border-radius: 100%;
+    top: 0.3rem;
+    left: 50%;
+    font-size: 0.25rem;
+    margin-left: -0.6rem;
+    padding: 0.3rem;
+    background-image: url("h5/bgBtn.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+.explain{
+	color: #b0b0b1;
+	text-align: center;
+}
+.photoDiv{
+	position: relative;
+}
+.photoDiv > button{
+	position: absolute;
+    top: 30%;
+    right: 3%;
+    width: 0.6rem;
+    background: url(img/h5/delete.png)no-repeat;
+    height: 0.6rem;
+    background-size: 100% 100%;
+    border: 0;
+    display: none;
+}
+.protrait{
+	background-image: url("h5/bgicod.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: 1px solid ;
+}
+.emblem{
+	background-image: url("img/h5/guohui.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: 1px solid ;
+}
+
+#fontImage,#backImage{
+	display: none;
+    width: 4.36rem;
+    height: 2.76rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    margin-left: 1.5rem;
+}
+/*提交按钮*/
+#postImagBtn{
+	    display: block;
+    height: 0.98rem;
+    text-align: center;
+    line-height: 0.98rem;
+    font-size: 0.32rem;
+    width: 95%;
+    margin: auto;
+    background-color: #3986F5;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+</style>                               
+<div class="wrapper-md" ng-controller="idCardcsController">
+    <header align="center" >
+    	<div>测试页面</div>
+    </header>
+    
+    <div class="row" style="float: left;width: 100%;">
+        <div class="col-sm-12 idCardDiv">
+        	<h5>
+        		
+        	</h5>
+        	<!--人像页-->
+        	<div class="photoDiv">
+        		<div class="protrait imagePage">
+        			
+	        		<div class="photoBtn" onclick="takePhoto('1')"></div>
+        		</div>
+	        	<img id="fontImage" />
+	            <button class="firDEl" onclick="clearImge('1',this)"></button>
+	            
+        	</div>
+            <p align="center" style="font-size: 0.4rem;">拍摄完请等待5-10秒钟</p>
+            <div class="shifou"></div>
+            <div class="textDiv"></div>
+            
+        	<!--国徽页-->
+        	<!--<div class="photoDiv">
+        		<div class="emblem imagePage">
+	        		<div class="photoBtn"  onclick="takePhoto('0')"></div>
+        		</div>
+        		<img id="backImage"  />
+        	  	<button class="twoDEl" onclick="clearImge('0',this)"></button>
+        	  	<div class="textDiv"></div>
+        	</div>-->
+        	
+        	<input type="file"  capture="camera" accept="image/*" style="display: none;" id="cameraInput" name="cameraInput" class="sign_file"/>
+        	
+
+        	
+
+        	<button type="button" id="postImagBtn" ng-click="postZjhmImage()" style="display: none;">确认并提交</button>
+            <canvas id="canvas" ></canvas>
+        </div>
+    </div>
+    
+   
+</div>
+<script type="text/javascript">
+	var count=0;
+	var isPosting = false; 
+	//目前正在拍照的照片方向
+	var orention='1';
+	var canvas=document.getElementById("canvas");
+	var context=canvas.getContext('2d');
+    
+		var flag=false;
+	$("input[type=file]").click(function(){
+		setTimeout(function(){
+			if(flag){
+				$(".textDiv").html("<br/>"+"用户代理: "+ navigator.userAgent);
+			}else{
+				$(".textDiv").text("（如没有显示“已经获取到照片”，请将页面信息截图发送至邮箱fanxuanping@anjia365.com,谢谢！"+"<br/>"+"用户代理："+navigator.userAgent)
+			}
+		},8000);
+	})
+
+		$("input[type=file]").change(function(){
+	    	flag=true;
+	        var file = this.files[0];
+	        showImg(file);
+	        if(file){
+	        	$(".shifou").html("已经获取到照片")
+	        }else{
+	        	$(".shifou").html("没有获取到照片")
+	        }
+	        count++;
+	   });
+</script>    
+    
+</div>

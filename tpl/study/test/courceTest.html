@@ -1,0 +1,308 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：测试课习题练习页面
+-->
+<style >
+
+    body {
+        background: #fff;
+    }
+
+    header > a {
+        position: absolute;
+        left:5%;
+        color:#fff;
+        font-size:1.8em;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border:0px;
+        border-radius:0px;
+    }
+
+    .container .img {
+        border:0px;
+        height:15em;
+    }
+
+    .body {
+        height:100%;
+        overflow:hidden;
+        padding-bottom:3em;
+        margin-bottom:3em;
+    }
+
+    .body  ul li {
+        width:100%;
+        border-bottom:1px #dedede solid;
+        font-size:1.2em;
+        color:#333;
+        font-weight: 300;
+        position:relative;
+        display:block;
+        height:auto;
+    }
+
+    .body  ul li > label {
+        margin:0 2.5%;
+        width:95%;
+        font-weight: 500;
+        line-height:3em;
+        height:auto;
+        display:inline-block;
+        overflow:inherit;
+        padding:0.3em 0;
+        position: relative;
+        /*text-overflow: ellipsis;*/
+    }
+
+    .body  ul li > label > span {
+        display:inline-block;
+        width:80%;
+        overflow:inherit;
+        white-space: pre-wrap;
+        line-height:150% !important;
+        position: relative;
+        top:0.2em;
+        left:3em;
+        color:#333;
+    }
+
+    .body  ul li >label> a {
+        display:inline-block;
+        position: relative;
+        font-size:2em;
+        font-weight: 100;
+        color:#c3c3c3;
+        transform: translate(0,-50%);
+        height:2em;
+        line-height:2em;
+        margin-right:0.5em;
+    }
+
+    .body  ul li > label>  a.title {
+        border:1px solid #008ef5;
+        font-size:0.7em;
+        color:#008ef5;
+        padding:0 0.5em;
+        top:2em;
+
+        position: absolute;
+        border-radius: 1em;
+    }
+
+
+    .body  ul li >label>  a.icon {
+        position: absolute;
+        background: #cccccc;
+        font-size:0.9em;
+        color:#fff;
+        border-radius: 50%;
+        height:2em;
+        width:2em;
+        text-align: center;
+        top:50%;
+        transform: translate(0,-50%);
+    }
+
+    .body ul li.selectLi  > label>  a.icon{
+        background:#008ef5 !important;
+        color:#FFF !important;;
+    }
+
+    .body ul li.rightLi > label>  a.icon{
+        background:#38ba9b !important;
+        color:#FFF !important;
+    }
+
+    .body ul li.rightLi > label {
+        color:#38ba9b;
+    }
+
+    .body ul li.errorLi > label>  a.icon{
+        background:#ff4242 !important;
+        color:#FFF !important;
+    }
+
+    .body ul li.errorLi {
+        background:#eee;
+    }
+
+    .body ul li.errorLi > label {
+        color:#ff4242;
+    }
+
+    .body ul li.rightLi {
+        background:#eee;
+    }
+
+
+    .body  ul li >label > .text {
+        margin-left:0em;
+        position: relative;
+        font-weight: 100 !important;
+        top:-0.05em;
+    }
+
+    .ask {
+        margin-top:3em;
+        position: relative;
+        height:auto;
+        margin-bottom:5em;
+    }
+
+    .ask > label {
+        position: absolute;
+        top:-1em;
+        display:inline-block;
+        background: #008ef5;
+        padding:0.4em 0.6em;
+        color:#fff;
+        font-size:0.8em;
+        left:1em;
+        border-radius:0.2em;
+    }
+
+    .ask > div {
+        background: #eeeeee;
+        height:auto;
+        padding:2em 0.8em;
+        padding-bottom:1.5em;
+    }
+
+    .ask .text .sucessTitle {
+        color:#38ba9b;
+        font-size:1.2em;
+    }
+
+    .sucessText {
+        color:#333333;
+        font-size:0.9em;
+    }
+
+    footer {
+        height:3em;
+        position: fixed;
+        background: #eee;
+        width:100%;
+        bottom:0px;
+        left:0;
+    }
+    footer > a {
+        background: #38ba9b;
+        color:#fff;
+        font-size:1.1em;
+        padding:0em 0.8em;
+        position: absolute;
+        height:2em;
+        line-height:2.1em;
+        top:0.3em;
+        border-radius: 1em;
+        left:5%;
+        font-weight: 200 !important;
+        overflow:hidden;
+    }
+
+    .next {
+        left:auto;
+        right:5%;
+    }
+
+    .btn_submit {
+        display:inline-block;
+        margin:2em 25%;
+        background:#eee;
+        color:#ccc;
+        font-size:1.3em;
+        width:50%;
+        padding:0.8em 3em;
+        border-radius: 1.5em;
+        text-align: center;
+    }
+
+    footer label {
+        line-height:3em;
+    }
+
+    .btn_submit.sure {
+        background:#00a8f3;
+        color:#fff;
+    }
+
+    header {
+        position: relative;
+    }
+
+    header > a.close {
+        left:auto !important;
+        right:5% !important;
+        color:#fff !important;
+        font-size:1.2em !important;
+        opacity:1 !important;
+        top:50% !important;
+        transform: translate(0%,-50%) !important;
+    }
+</style>
+<div class="wrapper-md" ng-controller="CourceTestController">
+    <header align="center" >
+        <a ng-click="goBack()"><i class="fa fa-angle-left"></i></a><span>习题练习</span><a class="close"><i class="fa fa-close" ng-click="close()"></i></a>
+    </header>
+    <div class="container">
+    	<div ng-switch="nowTest.contentType">
+    		<div class="img" ng-switch-when="1">
+		        <img ng-src="{{nowTest.img}}"  />
+		    </div>
+		    <div class="img" ng-switch-when="2">
+		        <video ng-src="{{nowTest.embed}}" controls="controls"></video>
+		    </div>
+    	</div>
+        <div class="body" >
+            <ul>
+                <li>
+                    <label> 
+                    	<a class="title" ng-switch="nowTest.examType">
+                    		<span ng-switch-when="0">单选</span>
+                    		<span ng-switch-when="1">多选</span>
+                    		<span ng-switch-when="3">判断</span>
+                    	</a> 
+                    	<span>{{nowTest.content}}</span>
+                    </label>
+                </li>
+                <!--选项-->
+                <li ng-repeat="item in nowTest.detail" isAnswer="{{item.isAnswer}}" ng-click="clickAnswerOption('answerOption{{$index}}')" id="answerOption{{$index}}" name="answerOptions" ng-if="!isShowAnswer">
+                    <label >
+                       <a class="icon">{{optionLetter[$index]}}</a>  <span class="text">{{item.optionDesc}}</span>
+                    </label>
+                </li>
+                <li ng-class="{'rightLi':(item.isAnswer == 1),'errorLi':(item.isAnswer==0 && item.selectLi)}" ng-repeat="item in nowTest.detail" ng-if="isShowAnswer">
+                    <label  >
+                        <a class="icon">
+                        	<i class="fa fa-check" ng-if="item.isAnswer == '1'"></i>
+                        	<i class="fa fa-close" ng-if="item.isAnswer == '0' && item.selectLi"></i>
+                        	<a class="icon" ng-if="item.isAnswer == '0' && !item.selectLi">{{optionLetter[$index]}}</a>
+                        </a>
+                        <span class="text">{{item.optionDesc}}</span>
+                    </label>
+                </li>
+            </ul>
+
+            <a  id="submitButton" class="btn_submit" ng-show="(!isShowAnswer) && (nowTest.examType == 1)" ng-click="clickSubmitButton()">提  交</a>
+            <a  class="btn_submit sure" ng-show="isShowReButton" ng-click="clickResetButton()">重  做</a>
+        </div>
+        <div class="ask" ng-show="isShowAnswer">
+            <label>正确答案</label>
+            <div class="text" >
+                <label class="sucessTitle">{{rightAnswer}}</label>
+                <label class="sucessText" >{{nowTest.explainContent}}</label>
+            </div>
+        </div>
+    </div>
+    <footer align="center" >
+        <a class="pref" ng-click="toLastTest()" id="lastTestButton" ng-show="nowTestNumber != 0">上一题</a>
+        <label>{{nowTestNumber+1}}/{{totalCount}}</label>
+        <a class="next" ng-click="toNextTest()" id="nextTestButton" ng-show="nowTestNumber+1 < totalCount">下一题</a>
+    </footer>
+</div>

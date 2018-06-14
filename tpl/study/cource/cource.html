@@ -1,0 +1,183 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：课程页面
+-->
+<style>
+    .body ul li > label.add {]
+
+        overflow:hidden;
+        white-space: pre-wrap !important;
+        text-overflow:ellipsis !important;
+        line-height: 140% !important;
+        margin-top:0.5em;
+
+    }
+    .body ul li > label {
+        width:76% !important;
+    }
+
+
+    .btn-yello {
+
+    }
+
+    .tooler {
+        width:100%;
+        height:4em;
+        font-size:1em;
+        overflow:auto;
+        background:#fff;
+        border-bottom:1px solid #ccc;
+    }
+
+    .tooler span {
+        position: relative;
+        display:inline-block;
+        float:left;
+        width:6em;
+        height:3em;
+        font-size:1.2em;
+        color:#999;
+        background:#fff;
+        margin:0.1em 0em;
+        border-radius: 0em;
+        text-align: center;
+        line-height:2.5em;
+        font-weight: 300 !important;
+    }
+
+    .tooler span a {
+        display:inline-block;
+        width:1px;
+        height:1.8em;
+        position: absolute;
+        right:0px;
+        top:50%;
+        transform: translate(0%,-50%) ;
+        background:#ccc;
+    }
+    .tooler span.active {
+        color:#448de4;
+        border-bottom:2px solid #448de4;
+    }
+    .inDiv {
+        min-width:100%;
+
+    }
+    
+	.progress {
+	  overflow: hidden;
+	  height: @line-height-computed;
+	  margin-bottom: @line-height-computed;
+	  background-color: @progress-bg;
+	  border-radius: @progress-border-radius;
+	  .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+	/*  width: 85%;*/
+	  min-width: 220px;
+      margin-left: 100px;
+	}
+	
+	.progress-bar {
+	  float: left;
+	  width: 0%;
+	  height: 100%;
+	  font-size: @font-size-small;
+	  line-height: @line-height-computed;
+	  color: @progress-bar-color;
+	  text-align: center;
+	  background-color: @progress-bar-bg;
+	  .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+	  .transition(width .6s ease);
+	}
+	
+	.progress-striped .progress-bar,
+	.progress-bar-striped {
+	  #gradient > .striped();
+	  background-size: 40px 40px;
+	}
+	
+	.progress.active .progress-bar,
+	.progress-bar.active {
+	  .animation(progress-bar-stripes 2s linear infinite);
+	}
+	
+	
+	
+	.progress-bar-success {
+	  .progress-bar-variant(@progress-bar-success-bg);
+	}
+	
+	.progress-bar-info {
+	  .progress-bar-variant(@progress-bar-info-bg);
+	}
+	
+	.progress-bar-warning {
+	  .progress-bar-variant(@progress-bar-warning-bg);
+	}
+	
+	.progress-bar-danger {
+	  .progress-bar-variant(@progress-bar-danger-bg);
+	}
+
+</style>
+<div class="wrapper-md" ng-controller="CourceController">
+    <header align="center" >
+        <span>课程</span>
+    </header>
+    <div class="tooler" >
+        <div class="inDiv" >
+        <span class="active">课程<a></a></span>
+        <span ng-click="goExam()">考试预约<a></a></span>
+        <span ng-click="goModelTest()">模拟考试<a></a></span>
+        </div>
+    </div>
+    <div class="container" ng-repeat="x in plan">
+      
+       <div class="img" ng-if="x.exceedTime == '1'">
+            <img ng-src="{{x.showImage}}"  />
+        </div>
+        <div class="body" ng-if="x.exceedTime == '1'">
+            <ul>
+                <li>
+                    <label>{{x.planName}}</label>
+                    <a class="btn btn-yello" ng-if="x.planStatus == '1'" ng-click="startToLearn('{{x.personPlanId}}',x.planStatus,x.catypeId);">开始学习</a>
+                	<a class="btn btn-yello" ng-if="x.planStatus == '3'" ng-click="startToLearn('{{x.personPlanId}}',x.planStatus,x.catypeId);">继续学习</a>
+                    <a class="btn btn-yello" ng-if="x.planStatus == '4'" ng-click="startToLearn('{{x.personPlanId}}',x.planStatus,x.catypeId);">学习完成</a>
+                    <a class="btn btn-yello" ng-if="x.planStatus == '0' || x.planStatus == '2'" ng-click="toPayOrder('{{x.personPlanId}}');">我要开通</a>
+                </li>
+                <li>
+                	<div style="width: 100%;height: 2.1em;line-height: 2.1em;">
+                		 当前/目标学时:{{x.nowStudyTime}}/{{x.targetStudyTime}}
+                	</div>
+                	<div style="width:100%;height: 1.9em;margin-top:0.2em ;">
+                		<span style="display: block;width: 90px;float: left;">学习进度:</span>
+                		<div ng-class="{progress: true, 'progress-striped': true}">
+					        <div ng-show="x.percent>0" ng-class="['progress-bar', progress-bar-info]" ng-style="{width:x.percent + '%'}">
+					            <div style="color: black;">{{x.percent}}%</div>
+					        </div>
+					        <div ng-show="x.percent==0" style="width: 100%;" >
+					            <div style="color: black;width: 100%;text-align: center;">0%</div>
+					        </div>
+					    </div>
+                	</div>
+                </li>
+                <li>
+                    <label>
+                                            适用对象：{{x.catypeName}}
+                    </label>
+                </li>
+                <li class="bodyText" ng-click="addHeight()">
+                    <label class="text">课程介绍：{{x.notes}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" >
+        $(function(){
+            $(".inDiv").width(($(".inDiv > span ").width() + 40)*$(".inDiv > span ").length );
+            $(".tooler span").width($(".tooler").width()/3);
+        })
+
+    </script>
+</div>

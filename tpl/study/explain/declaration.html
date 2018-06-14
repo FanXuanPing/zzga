@@ -1,0 +1,102 @@
+<!--
+	作者：TongAn
+	时间：2018-3-06
+	描述：机动车驾驶人身体情况申报表
+-->
+<style >
+
+	body {
+		background: #fff;
+	}
+
+	header > a {
+		position: absolute;
+		left:5%;
+		color:#fff;
+		font-size:1.8em;
+	}
+*{
+	padding: 0;
+	margin: 0;
+}
+.wrapper-md{
+	background-color: #FFF;
+}
+.letterDiv >h5{
+	text-align: center;
+	font-size: 0.5rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	margin: 0;
+}
+.letterDiv >p{
+	min-height: 0.28rem;
+	line-height: 0.28rem;
+}
+.letterDiv >label{
+	text-indent: 0.5rem;
+}
+.claraTionDiv{
+	width: 95%;
+	margin: auto;
+	height: auto;
+}
+.claraTionDiv td{
+	border: 1px solid #CCCCCC;
+	border-collapse: collapse;
+	padding-left: 0.2rem;  
+    text-align: left;
+    height: 0.8rem;
+    line-height: 0.8rem;
+}
+.claraTionDiv tr td:nth-child(1) {
+	width: 2rem;
+}
+#cimBtn{
+	width: 50%;
+    margin: 0.5rem auto;
+    display: block;
+    height: 0.9rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background-color: #007FBB;
+}
+</style>
+<div class="wrapper-md" ng-controller="declarationController">
+	
+	<div class="letterDiv">
+		<h5>机动车驾驶人身体情况申报表</h5>
+		<table class="claraTionDiv">
+
+			<tr><td>姓名：</td><td><span ng-bind="name"></span></td><td rowspan="3" style="width: 2rem;"></td></tr>
+			<tr><td>性别：</td><td><span ng-bind="sex"></span></td></tr>
+			<tr><td>出生日期：</td><td><span ng-bind="birthday"></span></td></tr>
+			<tr><td>国籍：</td><td colspan="2"><span ng-bind="nation"></span></td></tr>
+			<tr><td>身份证件名称：</td><td colspan="2"><span ng-bind="idType"></span></td></tr>
+			<tr><td>身份证件号码：</td><td colspan="2"><span ng-bind="idCard"></span></td></tr>
+			<tr><td>电子邮箱：</td><td colspan="2"></td></tr>
+			<tr><td>移动电话：</td><td colspan="2"ng-bind="phone"></td></tr>
+			<tr><td>身份证件记载地址：</td><td colspan="2" ng-bind="address"></td></tr>
+			<tr><td>邮递地址：</td><td colspan="2"ng-bind=""></td></tr>
+			<tr><td>档案编号：</td><td colspan="2" ng-bind="archNo"></td></tr>
+			<tr><td>准驾车型代号：</td><td colspan="2" ng-bind="carType"></td></tr>
+			<tr><td>联系电话：</td><td colspan="2"></td></tr>
+			<tr><td>申报内容：</td><td colspan="2">
+				<p>一、本人身体条件符合中华人民共和国机动车驾驶证申请条件;</p>
+				<p>二、本人不具有器质性心脏病、癫痫病、美尼尔氏症、眩晕症、癔病、震颤麻痹、精神病、痴呆、影响肢体活动的神经系统疾病等妨碍安全驾驶疾病，及三年内有吸食、注射毒品行为或者解除强制隔离戒毒措施未满三年，或者长期服用依赖性精神药品成瘾未戒除的情况；</p>
+				<p>三、本人的身体条件如果发生不符合机动车驾驶许可条件的情形，本人将在30日内向公安机关申请降低准驾车型或注销机动车驾驶证；</p>
+				<p>四、上述申告为本人真实情况和真是意思表示，如果不属实本人自愿承担相应的法律责任。</p>
+				
+				<p><label><span>申告人：</span><a  ng-bind="name"></a></label>
+				<br>	<label><a  ng-bind="regDate"></a></label></p>
+			</td></tr>
+
+		</table>
+		<div style="width: 100%;">
+			 <button id="cimBtn" type="button" ng-click="confirm();">确定</button>
+		</div>
+	</div>
+	
+	
+</div>

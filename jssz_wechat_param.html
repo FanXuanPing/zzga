@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+		    th {
+		        text-align: right;
+		    }
+		    tr {
+		        line-height: 40px;
+		    }
+		</style>
+	</head>
+	<body>
+	    <form>
+	    <table style="margin: auto; margin-top: 60px;">
+	        <tr>
+	            <th>域名(默认)：</th>
+	            <td>
+	                <input type="text" id="domain" size="60" value="" />
+	            </td>
+	        </tr>
+	        <tr>
+                <th>应用名(默认)：</th>
+                <td>
+                    <input type="text" id="app" size="60" value="" />
+                </td>
+            </tr>
+	    </table>
+	    
+	    <table style="margin: auto; margin-top: 20px;">
+            <tr>
+                <th>idCard [证件号码]：</th>
+                <td>
+                    <input type="text" id="idCard" size="50" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>realName [姓名]：</th>
+                <td>
+                    <input type="text" id="realName" size="50" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>cardType [证件类型]：</th>
+                <td>
+                    <select id="cardType" style="width: 335px;">
+                        <option value="A">居民身份证</option>
+                        <option value="C">军官证</option>
+                        <option value="D">士兵证</option>
+                        <option value="E">军官退休证</option>
+                        <option value="F">境外人员身份证明</option>
+                        <option value="G">外交人员身份证明</option>
+                    </select>
+                </td>
+            </tr>
+            <!--
+            <tr>
+                <th>points [累计扣分]：</th>
+                <td>
+                    <select id="points" style="width: 335px;">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2" selected="selected">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </td>
+            </tr>
+            -->
+            <tr>
+                <th>city [地市]：</th>
+                <td>
+                    <select id="city" style="width: 335px;">
+                        <option value="320500">苏州</option>
+                        <option value="310000">其他地区</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>drivingLicense [准驾车型]：</th>
+                <td>
+                    <select id="drivingLicense" style="width: 335px;">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="A3">A3</option>
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="C1">C1</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>phone [手机号]：</th>
+                <td>
+                    <input type="text" id="phone" size="50" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>fileNum [档案编号]：</th>
+                <td>
+                    <input type="text" id="fileNum" size="50" value="" />
+                </td>
+            </tr>
+            <tr>
+                <th>checkDate [审验有效期]：</th>
+                <td>
+                    <input type="text" id="checkDate" size="50" value="" placeholder="yyyy-MM-dd" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="生成URL" onclick="doCreateUrl();"/>
+                </td>
+            </tr>
+        </table>
+        
+        <table style="margin: auto; margin-top: 20px;">
+            <tr>
+                <th>URL:</th>
+                <td>
+                    <textarea id="url" cols="60" rows="8" readonly="readonly"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>微信用的URL:</th>
+                <td>
+                    <textarea id="urlForWeChat" cols="60" rows="8" readonly="readonly"></textarea>
+                </td>
+            </tr>
+        </table>
+        
+        </form>
+	    
+	    <script>
+	        (function init() {
+	            var dftDomain = "http://wx.jsjtxx.com:28106";
+                var dftApp = "jpv2H5";
+                
+                document.getElementById("domain").value = dftDomain;
+                document.getElementById("app").value = dftApp;
+	        })();
+	        
+	        function objToJsonStr(pobj) {
+	            
+	            var jsonStr = "{";
+	            
+	            for(key in pobj) {
+	                var val = pobj[key];
+	                var item = "\"" + key + "\":\"" + val + "\",";
+	                jsonStr += item;
+	            }
+	            
+	            jsonStr = jsonStr.substr(0, jsonStr.length - 1);
+	            jsonStr += "}";
+	            
+	            return jsonStr;
+	        }
+	        
+	        function doCreateUrl() {
+	            // http://wx.jsjtxx.com:28106/jpv2H5/jssz.html#/h5?data={"idCard":"411202197903089695","drivingLicense":"D","points":2,"city":"320500"}
+	            var domain = document.getElementById("domain").value;
+	            var app = document.getElementById("app").value;
+	            
+	            if(!domain) {
+                    alert("域名不能为空");
+                    document.getElementById("domain").focus();
+                    return;
+                }
+	            
+	            if(!app) {
+                    alert("应用名不能为空");
+                    document.getElementById("app").focus();
+                    return;
+                }
+	            
+	            var url = domain;
+	            
+	            if(app.startsWith("/")) {
+                    url += app;
+                } else {
+                    url += "/" + app;
+                }
+                
+                url += "/jssz.html#/h5/courceindex?data=";
+                
+	            var idCard = document.getElementById("idCard").value;
+	            if(!idCard) {
+	                alert("证件号码不能为空");
+                    document.getElementById("idCard").focus();
+                    return;
+	            }
+	            
+	            var realName = document.getElementById("realName").value;
+	            if(!realName) {
+	                alert("姓名不能为空");
+	                document.getElementById("realName").focus();
+	                return;
+	            }
+	            
+	            var cardType = document.getElementById("cardType").value;
+	            //var points = document.getElementById("points").value;
+	            var city = document.getElementById("city").value;
+	            var drivingLicense = document.getElementById("drivingLicense").value;
+	            
+	            var phone = document.getElementById("phone").value;
+	            var fileNum = document.getElementById("fileNum").value;
+	            var checkDate = document.getElementById("checkDate").value;
+	            
+	            var dataObj = {};
+	            dataObj.idCard = idCard;
+	            dataObj.realName = realName;
+	            dataObj.cardType = cardType;
+	            //dataObj.points = points;
+	            dataObj.city = city;
+	            dataObj.drivingLicense = drivingLicense;
+	            dataObj.phone = phone;
+	            dataObj.fileNum = fileNum;
+	            dataObj.checkDate = checkDate;
+                
+                var jsonStr = objToJsonStr(dataObj);
+                url += jsonStr;
+                
+	            var encodeUrl = encodeURI(url);
+	            
+	            document.getElementById("url").innerText = url;
+	            document.getElementById("urlForWeChat").innerText = encodeUrl;
+	            
+	        }
+	    </script>
+	</body>
+</html>

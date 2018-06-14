@@ -1,0 +1,32 @@
+{
+  "message":{
+    "message":{
+      "fileNameCc":"EE2572FCAC76FAEE9C33DC5901307461",
+      "playerType":"1",
+      "sum":4,
+      "chapterName":"①法律赋予驾驶员的安全权利(学时:0)",
+      "nxtWare":13754,
+      "wareCount":332,
+      "nextplay":false,
+      "studyCount":0,
+      "mode":"0",
+      "preChapter":"115115",
+      "curWare":13753,
+      "preWare":"",
+      "num":0,
+      "nxtChapter":"115115",
+      "rate":0,
+      "ware":"wares//91a861eeba8a409aacf575d38fccbf16.mp4",
+      "sumStudyTime":0,
+      "wareDesc":"【客运一】道路运输相关法律、法规,1.驾驶员的安全权利与义务,  ①法律赋予驾驶员的安全权利",
+      "targetStudyTime":24,
+      "ccCode":"4bf2ade910ca3c3a7a96156bcb8ea490",
+      "verificationcode":"4bf2ade910ca3c3a7a96156bcb8ea490",
+      "wareId":13753
+    },
+    "dayLimitStudyTime":10,
+    "dayStudyTime":0,
+    "code":"00"
+  },
+  "flag":true
+}

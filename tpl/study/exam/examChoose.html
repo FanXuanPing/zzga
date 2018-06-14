@@ -1,0 +1,406 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：课程页面
+-->
+<style>
+	.body ul li > label.add {]
+
+	overflow:hidden;
+		white-space: pre-wrap !important;
+		text-overflow:ellipsis !important;
+		line-height: 140% !important;
+		margin-top:0.5em;
+
+	}
+	.body ul li > label {
+		width:76% !important;
+	}
+
+
+	.btn-yello {
+
+	}
+
+	.tooler {
+		width:100%;
+		height:4em;
+		font-size:1em;
+		overflow:auto;
+		background:#fff;
+		border-bottom:1px solid #ccc;
+	}
+
+	.tooler span {
+		position: relative;
+		display:inline-block;
+		float:left;
+		width:6em;
+		height:3em;
+		font-size:1.2em;
+		color:#999;
+		background:#fff;
+		margin:0.1em 0em;
+		border-radius: 0em;
+		text-align: center;
+		line-height:2.5em;
+		font-weight: 300 !important;
+	}
+
+	.tooler span a {
+		display:inline-block;
+		width:1px;
+		height:1.8em;
+		position: absolute;
+		right:0px;
+		top:50%;
+		transform: translate(0%,-50%) ;
+		background:#ccc;
+	}
+	.tooler span.active {
+		color:#448de4;
+		border-bottom:2px solid #448de4;
+	}
+	.inDiv {
+		min-width:100%;
+
+	}
+
+	.carTypeDdiv {
+		font-size:1em;
+		height:4em;
+		width:100%;
+		background:#FFF;
+	}
+
+	.Km4div {
+		float:right !important;
+		border:1px solid #FFF;
+	}
+
+	.Km1div {
+		border:1px solid #FFF;
+	}
+
+	.carTypeDdiv label,.Km1div label,.Km4div label,.sjlx label,.sxlx label,.mnks label {
+		margin-top:0.2em;
+		width:100%;
+		text-align: center;
+		font-size:1.1em;
+	}
+
+	.Km4div span {
+		margin-top:-0.5em;
+		font-size:0.9em;
+		position: relative;
+		top:-0.5em;
+	}
+
+	.container,.body {
+		width:100%;
+		border:0px;
+		margin-left:0px;
+		margin-top:0.4em;
+		border-radius: 0px;
+		background: transparent;
+	}
+
+	.Km1div,.Km4div {
+		font-size:1em;
+		height:7em;
+		margin-top:1em;
+		width:49%;
+		float:left;
+		background:#fff;
+	}
+
+	.Km1div label {
+		font-size:1em;
+		color:#008ef5;
+		position: relative;
+		top:-0em;
+	}
+
+	.Km4div label {
+		position: relative;
+		top:-0em;
+	}
+
+	.main {
+		display:inline-block;
+		width:100%;
+		font-size:1em;
+		height:18em;
+		background:#fff;
+		margin-top:1em;
+		overflow:hidden;
+	}
+
+	.main .sxlx,.main .sjlx {
+		display:inline-block;
+		width:50%;
+		border-right:1px solid #ccc;
+		border-bottom:1px solid #ccc;
+		height:9em;
+		font-size:1em;
+		float:left;
+	}
+
+	.main .mnks {
+		display:inline-block;
+		width:49%;
+		height:18em;
+		font-size:1em;
+		float:right;
+	}
+
+	.carTypeDdiv .icon {
+		height:1.5em;
+		width:1.9em;
+		background:url("img/icon_car.png");
+		position: relative;
+		background-repeat: no-repeat;
+		background-size:100% 100%;
+		top:0.3em;
+	}
+
+	.Km1div .icon ,.Km4div .icon,.sjlx .icon,.sxlx .icon,.mnks .icon {
+		height:2em;
+		width:2em;
+		background:url("img/km1.png");
+		position: relative;
+		background-repeat: no-repeat;
+		background-size:100% 100%;
+		margin-top:1em;
+	}
+
+	.Km4div .icon {
+		background-image:url("img/km4.png");
+	}
+
+	.sjlx .icon {
+		height:4em;
+		width:4em;
+		background-image:url("img/icon_sjlx.png");
+	}
+
+	.sxlx .icon{
+		height:4em;
+		width:4em;
+		background-image:url("img/icon_sxlx.png");
+	}
+
+	.mnks .icon {
+		margin-top:5em;
+		height:4em;
+		width:4em;
+		background-image:url("img/icon_mjks.png");
+	}
+
+	.carTypeDdiv.active,.Km1div.active,.carTypeDdiv li.active,.Km4div.active {
+		background-image:url("img/select.png");
+		background-repeat: no-repeat;
+		background-position:right bottom;
+		background-size:auto 35%;
+		border:1px solid #008ef5;
+	}
+
+	.Km1div.active,.Km4div.active {
+		background-size:auto 25%;
+	}
+
+	.carTypeDdiv ul{
+		margin:0px;
+		padding:0px;
+		list-style: none;
+		background:#f5f5f5;
+	}
+	.carTypeDdiv ul li {
+		width:3em;
+		height:4.8em;
+		font-size:0.8em;
+		border:1px solid #fff;
+		border-right:1px solid #ccc;
+		background:#fff;
+		float:left;
+		margin-right:1px;
+	}
+	.carTypeDdiv ul li i{
+		width: 1.8em;
+		height: 1.8em;
+		margin-top:0.5em;
+		border:0px;
+		background-repeat: no-repeat;
+		background-size: 100% auto;
+		position: relative;
+		top:1em;
+	}
+	.carTypeDdiv ul li label {
+		margin-top:0px;
+		height:2em;
+		line-height:2em;
+
+	}
+
+	.kr {
+		background-image: url("img/icon_kr.png");
+	}
+	.hy {
+		background-image: url("img/icon_hy.png");
+	}
+	.wy {
+		background-image: url("img/icon_wy.png");
+	}
+	.wx {
+		background-image: url("img/icon_wx.png");
+	}
+	.jl {
+		background-image: url("img/icon_jl.png");
+	}
+
+	.cyzg i{
+		background-image: url("img/zgz.png") !important;
+	}
+
+	.jxjy i{
+		background-image: url("img/jxjy.png")  !important;;
+		background-repeat: no-repeat;
+	}
+</style>
+<div class="wrapper-md" ng-controller="ExamChooseController">
+	<header align="center" >
+		<span>练习</span>
+	</header>
+	<div class="tooler" >
+		<div class="inDiv" >
+			<span class="active" ng-click="checkCatType('jsz')" >驾驶证<a></a></span>
+			<span ng-click="checkCatType('zgz')" >资格证<a></a></span>
+		</div>
+	</div>
+	<div class="container" >
+		<div class="body"  ng-show="catType == 'zgz'" >
+			<div class="carTypeDdiv" align="center"  >
+				<ul >
+					<li class="active" align="center">
+						<i class="fa kr" ></i>
+						<label>客运</label>
+					</li>
+					<li align="center">
+						<i class="fa hy" ></i>
+						<label>货运</label>
+					</li>
+					<li align="center">
+						<i class="fa wx" ></i>
+						<label>危险品</label>
+					</li>
+					<li align="center">
+						<i class="fa jl" ></i>
+						<label>教练车</label>
+					</li>
+					<li align="center">
+						<i class="fa wy" ></i>
+						<label>网约车</label>
+					</li>
+				</ul>
+			</div>
+			<div class="Km1div active cyzg" catType="{{catType}}" align="center" >
+				<i class="fa icon"></i>
+				<label>从业资格证</label>
+			</div>
+			<div class="Km4div jxjy" catType="{{catType}}" align="center" >
+				<i class="fa icon"></i>
+				<label>继续教育</label>
+			</div>
+			<div class="main"  align="center">
+				<div class="sjlx">
+					<i class="fa icon"></i>
+					<label>随机练习</label>
+				</div>
+				<div class="mnks">
+					<i class="fa icon"></i>
+					<label>模拟考试</label>
+				</div>
+				<div class="sxlx">
+					<i class="fa icon"></i>
+					<label>顺序练习</label>
+				</div>
+			</div>
+		</div>
+		<div class="body" ng-show="catType == 'jsz'">
+			<div class="carTypeDdiv active" align="center"  >
+				<i class="fa icon"></i>
+				<label>小车C1、C2、C3</label>
+			</div>
+			<div class="Km1div active" catType="{{catType}}" align="center" >
+				<i class="fa icon"></i>
+				<label>科目一</label>
+			</div>
+			<div class="Km4div " catType="{{catType}}" align="center" >
+				<i class="fa icon"></i>
+				<label>安全文明驾驶</label>
+				<span>(科目四)</span>
+			</div>
+			<div class="main"  align="center">
+				<div class="sjlx">
+					<i class="fa icon"></i>
+					<label>随机练习</label>
+				</div>
+				<div class="mnks">
+					<i class="fa icon"></i>
+					<label>模拟考试</label>
+				</div>
+				<div class="sxlx">
+					<i class="fa icon"></i>
+					<label>顺序练习</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" >
+		$(function(){
+			$(".inDiv").width(($(".inDiv > span ").width() + 40)*$(".inDiv > span ").length );
+			$(".container,.container .body").height($(window).height() - $("header").height()  - $(".tooler").height());
+			$(".tooler span").width($(".tooler").width()/2);
+			$(".carTypeDdiv ul li").width($(".carTypeDdiv").width()/5- 3);
+			$(window).resize(function(){
+				$(".container,.container .body").height($(window).height() - $("header").height() - $(".tooler").height() );
+				$(".tooler span").width($(".tooler").width()/2);
+				$(".carTypeDdiv ul li").width($(".carTypeDdiv").width()/5- 3);
+			}).resize();
+
+			setTimeout(function(){
+
+				$(".cyzg").click(function(){
+					$(".jxjy").removeClass("active");
+					$(this).addClass("active");
+				});
+
+				$(".jxjy").click(function(){
+					$(".cyzg").removeClass("active");
+					$(this).addClass("active");
+				});
+
+				$(".Km4div[cattype=jsz]").click(function(){
+					$(".Km1div[cattype=jsz]").removeClass("active");
+					$(this).addClass("active");
+				});
+
+				$(".Km1div[cattype=jsz]").click(function(){
+					$(".Km4div[cattype=jsz]").removeClass("active");
+					$(this).addClass("active");
+				});
+
+				$(".tooler span").click(function(){
+					$(".tooler span").removeClass("active");
+					$(this).addClass("active");
+				});
+				$(".carTypeDdiv ul li").click(function(){
+					$(".carTypeDdiv ul li").removeClass("active");
+					$(this).addClass("active");
+				});
+			},500);
+
+		})
+
+	</script>
+</div>

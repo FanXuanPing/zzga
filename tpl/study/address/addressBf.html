@@ -1,0 +1,98 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：选择邮递地址页面
+-->
+<style>
+	html{
+		font-size: 100px;
+	}
+.wrapper-md{
+	position: relative;
+	
+}
+
+  
+      header {
+           display: inline-block;
+		    width: 100%;
+		    height: 1rem;
+		    z-index: 1000;
+		    float: left;
+		    background: #FFFFFF;
+		    border-bottom: 1px solid #CCCCCC;
+    }
+
+   
+
+ .wrapper-md{
+ 	background-color: #FFFFFF;
+ 	height: 100vh;
+ }
+
+.addressCim,#amend,#cancel{
+	width: 30%;
+	height: 0.8rem;
+	text-align: center;
+	line-height: 0.8rem;
+	background-color: #3986F5;
+	border: none;
+	border-radius: 5px;
+	color: #FFFFFF;
+}
+
+.addressDiv >p{
+	width: 100%;
+	margin: 0.5rem 0;
+}
+.addressDiv input{
+	border: 1px solid;
+}
+.bz{
+	color: red;
+}
+</style>                               
+<div class="wrapper-md" ng-controller="addressBfController">
+    <!--<header align="center" >
+    	<div><span><i style="font-size: 0.8em;" class="fa fa-angle-left " ng-click="goBackLast()">返回</i></span>身份验证</div>
+    </header>-->
+    
+    <div class="row" style="margin: 0;width: 100%;">
+        <div class="col-sm-12 addressDiv" style="margin-top: 0.5rem;">
+	        	<span ng-click="dxFun()" >
+	        		<input type="radio" name="needAddress"  ng-model="needAddress" ng-value="1"
+	        		  id="send">
+	        		 <label for="send">请帮我办理回执并邮寄给我(需支付邮寄服务费30元)</label>
+	        	</span>
+	        	<br />
+	        	<span  ng-click="dxFun()">
+	        		<input  type="radio" name="needAddress"  ng-model="needAddress" ng-value="0" ng-click="dxFun()" id="noSend"/>
+	        		<label  for="noSend">我自己前往办理</label>
+	        	</span>
+	        	<br />
+        		<div class="xz">
+        			<p>用户您好,您的邮寄地址为：</p>
+			    	<p>
+			    		<input type="text" id="addressIpt" style="width: 100%;" ng-model="address" ng-click="enFocus1()"/>
+			    	</p>
+			    	<p class="bz">请认真填写并核实邮寄地址，如果地址填写错误，您将无法收到回执单。</p>
+			    	<p>
+			    		<span>联系电话：</span>
+			    		<input type="text" id="userPhone" style="width: 100%;" ng-model="phone"  ng-click="enFocus2()" placeholder="请输入手机号"/>
+			    	</p>
+        		</div>
+        	<button type="button" class="addressCim" ng-click="addressConfirm()">确认</button>
+        </div>
+        <!--<div class="col-sm-12 addressDiv" ng-if="!shows">
+        	<p>邮寄地址（请在下方输入详细地址+邮编）：</p>
+        	<p>
+        		<input type="text" style="width: 100%;" id="newAddress" ng-model="newAddress" />
+        	</p>
+        	<button type="button" class="addressCim" ng-click="addressConfirm()">确认</button>
+        	<button type="button" id="amend" ng-click="cancel()">取消</button>
+        </div>-->
+    </div>
+    
+   
+</div>
+    

@@ -1,0 +1,477 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：测试课习题练习页面
+-->
+<style >
+
+    body {
+        background:#fff;
+    }
+
+    header > a {
+        position: absolute !important;
+        left:5% !important;
+        color:#fff !important;
+        font-size:1.8em !important;
+        top:0.2em !important;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border:0px;
+        border-radius:0px;
+    }
+
+    .container .img {
+        border:0px;
+        height:15em;
+    }
+
+    .photoBg {
+        width:100%;
+        height:13em;
+        background:#008ef5;
+        color:#fff;
+        position: relative;
+    }
+
+    .photoBg video {
+
+    }
+
+    .container {
+        width:100%;
+        height:100%;
+        background:#fff;
+        color:#008ef5;
+    }
+
+    .container .titleText {
+        height:8em;
+        width:100%;
+        position: relative;
+    }
+
+    .container .titleText > label {
+        position: absolute;
+        width:88%;
+        margin:0 6%;
+        top:50%;
+        transform: translate(0,-50%);
+    }
+
+    .bottomDiv {
+        width:100%;
+
+    }
+
+    .bottomDiv .messageText {
+        width:80%;
+        height:7.5em;
+        background:transparent;
+        margin:0 10%;
+        color: #008ef5;
+        font-weight: 300;
+        font-size:1.1em;
+        line-height:200%;
+        margin-top:2.5em;
+    }
+
+    .messageText > div {
+        width:80%;
+        margin:0 10%;
+    }
+
+    .photoButtn {
+        display:inline-block;
+        width:8.5em;
+        height:3em;
+        line-height:3em;
+        background:#ffb512;
+        border-radius: 3em;
+        margin:2em;
+        margin-bottom:1em;
+        position: relative;
+        color:#fff;
+        font-size:1.4em;
+    }
+
+    .photoButtn > i {
+        width:2.1em;
+        height:2.1em;
+        border-radius: 50%;
+        border:1px solid #000;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .downBtnDiv {
+        position: relative;
+    }
+
+    .downBtnDiv > a.close{
+        position: absolute;
+        color:#fff;
+        font-size:1.6em;
+        z-index:10000;
+        left:2em;
+        font-weight: 200 !important;
+        opacity: 1 !important;
+        top:0.3em;
+    }
+
+    .titleText {
+        width:80%;
+        position: absolute;
+        bottom:1em;
+        left:50%;
+        font-size:0.8em;
+        transform: translate(-50%,0);
+    }
+
+    .icon {
+        display:inline-block;
+        width:6.5em;
+        height:6.5em;
+        position: absolute;
+        margin:0 auto;
+        top:40%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        background:url(img/h5/icon_photo.png);
+        background-size:100% 100%;
+    }
+
+    .maskBg {
+        color:#fff;
+        display:inline-block;
+        position: absolute;
+        top:0px;
+        left:0px;
+        z-index:1000;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        font-size:1.2em;
+        text-align: center;
+    }
+
+    .spinner {
+        margin: 200px auto;
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    .container1 > div, .container2 > div, .container3 > div {
+        width: 16px;
+        height: 16px;
+        background-color: #00a8f3;
+
+        border-radius: 100%;
+        position: absolute;
+        -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+        animation: bouncedelay 1.2s infinite ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .spinner .spinner-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container2 {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+    }
+
+    .container3 {
+        -webkit-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+    }
+
+    .circle1 { top: 0; left: 0; }
+    .circle2 { top: 0; right: 0; }
+    .circle3 { right: 0; bottom: 0; }
+    .circle4 { left: 0; bottom: 0; }
+
+    .container2 .circle1 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .container3 .circle1 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .container1 .circle2 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .container2 .circle2 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .container3 .circle2 {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .container1 .circle3 {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .container2 .circle3 {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .container3 .circle3 {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .container1 .circle4 {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .container2 .circle4 {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .container3 .circle4 {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0.0) }
+        40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        } 40% {
+              transform: scale(1.0);
+              -webkit-transform: scale(1.0);
+          }
+    }
+
+    .textbg {
+        position: relative;
+        top:-180px;
+    }
+
+    header {
+        position: relative;
+    }
+
+    header > a.close {
+        left:auto !important;
+        right:5% !important;
+        color:#fff !important;
+        font-size:1.2em !important;
+        opacity:1 !important;
+        top:50% !important;
+        transform: translate(0%,-50%) !important;
+    }
+</style>
+<div class="wrapper-md"  ng-controller="photographController">
+    <header align="center" >
+        <a class="btnA"  ng-click="close()" ><i class="fa fa-angle-left " ></i></a><span>人脸识别</span><a class="close"><i class="fa fa-close" ng-click="close()"></i></a>
+    </header>
+    <div class="photoBg" >
+        <a class="icon"></a>
+        <div class="titleText" align="center" >
+            <label>在您学习过程中，将随机进行人脸验证，若非本人验证，则无法完成课程学习和获得继续教育签章。</label>
+        </div>
+    </div>
+    <div class="container">
+           <div class="bottomDiv" >
+            <div class="messageText" >
+                <div >
+                    1.请使头像正面位于画面框中
+                </div>
+                <div>
+                    2.请使头像尽量清晰
+                </div>
+                <div>
+                    3.请保证眼睛不反光，双眼可见
+                </div>
+                <div>
+                    4.请保证无墨镜，口罩等遮掩物
+                </div>
+            </div>
+               <div class="downBtnDiv" align="center" >
+                   <a  class="photoButtn" ng-show="isFirst == '1'" >
+                       人脸注册
+                   </a>
+               </div>
+            <div class="downBtnDiv"  align="center" >
+                <a  class="photoButtn" >
+                    识别验证
+                </a>
+            </div>
+        </div>
+        <input type="file" capture="camera" accept="image/*" style="display:none;" id="cameraInput" name="cameraInput" class="sign_file"/>
+        <canvas id="canvas" style="display:none;width:100%;height:500px;position: absolute;top:0;left:0px;" ></canvas>
+    </div>
+    <div class="maskBg" style="display:none;" >
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+
+        </div>
+        <div class="textbg" >正在识别中...</div>
+    </div>
+    <script type="text/javascript" >
+        //这段代 主要是获取摄像头的视频流并显示在Video 签中
+        $("#video,#canvas").height($(window).height()).width($(window).width());
+        $(".photoButtn").click(function(){
+            if ( isPosting == false )
+                $("#cameraInput").click();
+            else
+               alert("人脸识别中");
+        });
+
+        $("input[type=file]").change(function(){
+            var file = this.files[0];
+            drawOnCanvas(file);
+        });
+        var  canvas = document.querySelector('canvas');
+        var isPosting = false;
+
+        function drawOnCanvas(file) {
+            $(".maskBg").show();
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                isPosting = true;
+                var dataURL = e.target.result,
+                        ctx = canvas.getContext('2d'),
+                        img = new Image();
+                img.onload = function() {
+                    var square = 320;
+                    canvas.width = square;
+                    canvas.height = square;
+                    var context = canvas.getContext('2d');
+                    var degree =  90 * Math.PI / 180;
+                   // context.rotate(degree);
+                    context.clearRect(0, 0, square, square);
+
+                    var imageWidth;
+                    var imageHeight;
+                    var offsetX = 0;
+                    var offsetY = 0;
+                    if (this.width > this.height) {
+                        imageWidth = Math.round(square * this.width / this.height);
+                        imageHeight = square;
+                        offsetX = - Math.round((imageWidth - square) / 2);
+                    } else {
+                        imageHeight = Math.round(square * this.height / this.width);
+                        imageWidth = square;
+                        offsetY = - Math.round((imageHeight - square) / 2);
+                    }
+                   // context.drawImage(this, offsetX, offsetY, imageWidth, imageHeight);
+                   // $("#canvas").show();
+                   // context.rotate(degree);
+                    //var base64 = canvas.toDataURL('image/jpeg',0.5);
+                    if (navigator.userAgent.match(/iphone/i)) {
+                        rotateImg(this,'left',canvas);
+                       // context.drawImage(canvas, 0, 0, 300, 300);
+                    }
+                    else
+                        context.drawImage(this, 0, 0, 300, 300);
+                   // this.src = canvas.toDataURL();
+                    postImg();
+                };
+                img.src = dataURL;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function rotateImg(img, direction,canvas) {
+            //; font-family: 'Helvetica Neue', 微软雅黑E软雅黑, Tohoma; font-size: 12px;" />         //最小与最大旋转方向，图片旋转4次后回到原方向
+            var min_step = 0;
+            var max_step = 3;
+            //var img = document.getElementByIdx_x_x(pid);
+            if (img == null)return;
+            //img的高度和宽度不能在img元素隐藏后获取，否则会出错
+            var height = img.height;
+            var width = img.width;
+            //var step = img.getAttribute('step');
+            var step = 2;
+            if (step == null) {
+                step = min_step;
+            }
+            if (direction == 'right') {
+                step++;
+                //旋转到原位置，即超过最大值
+                step > max_step && (step = min_step);
+            } else {
+                step--;
+                step < min_step && (step = max_step);
+            }
+            //img.setAttribute('step', step);
+
+            //旋转角度以弧度值为参数
+            var degree = step * 90 * Math.PI / 180;
+            var ctx = canvas.getContext('2d');
+            switch (step) {
+                case 0:
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0);
+                    break;
+                case 1:
+                    canvas.width = height;
+                    canvas.height = width;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, 0, -height);
+                    break;
+                case 2:
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, -width, -height);
+                    break;
+                case 3:
+                    canvas.width = height;
+                    canvas.height = width;
+                    ctx.rotate(degree);
+                    ctx.drawImage(img, -width, 0);
+                    break;
+            }
+        }
+
+    </script>
+</div>

@@ -1,0 +1,433 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：测试课习题练习页面
+-->
+<style >
+
+    body {
+        background:#fff;
+    }
+
+    header > a {
+        position: absolute;
+        left:5%;
+        color:#fff;
+        font-size:1.8em;
+    }
+
+    .container {
+        width:100%;
+        margin:0px;
+        border:0px;
+        border-radius:0px;
+    }
+
+    .container .img {
+        border:0px;
+        height:15em;
+    }
+
+    .photoBg {
+        width:100%;
+        height:100%;
+
+    }
+
+    .photoBg video {
+
+    }
+
+    .container {
+        position: absolute;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        color:#FFF;
+        -webkit-mask-image:url("img/h5/mask.png");
+        -webkit-mask-size:100% 100%;
+        -webkit-mask-position:0 3em;
+    }
+
+    .container .titleText {
+        height:8em;
+        width:100%;
+        position: relative;
+    }
+
+    .container .titleText > label {
+        position: absolute;
+        width:88%;
+        margin:0 6%;
+        top:50%;
+        transform: translate(0,-50%);
+    }
+
+    .bottomDiv {
+        width:100%;
+        position: absolute;
+        bottom:0px;
+        z-index:100000;
+    }
+
+    .bottomDiv .messageText {
+        width:90%;
+        height:7.5em;
+        border-radius: 5em;
+        background:rgba(0,0,0,0.5);
+        margin:0 5%;
+        color: #d4d30c;
+        font-weight: bolder;
+        padding-top:1em;
+    }
+
+    .messageText > div {
+        width:80%;
+        margin:0 10%;
+    }
+
+    .photoButtn {
+        display:inline-block;
+        width:2.5em;
+        height:2.5em;
+        background:#FFF;
+        border-radius: 50%;
+        margin:0.3em;
+        position: relative;
+    }
+
+    .photoButtn > i {
+        width:2.1em;
+        height:2.1em;
+        border-radius: 50%;
+        border:1px solid #000;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+
+    .downBtnDiv {
+        position: relative;
+    }
+
+    .downBtnDiv > a.close{
+        position: absolute;
+        color:#fff;
+        font-size:1.6em;
+        z-index:10000;
+        left:2em;
+        font-weight: 200 !important;
+        opacity: 1 !important;
+        top:0.3em;
+    }
+
+    canvas {
+        background:transparent;
+    }
+
+    .maskBg {
+        color:#fff;
+        display:inline-block;
+        position: absolute;
+        top:0px;
+        left:0px;
+        z-index:1000;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        font-size:1.2em;
+        text-align: center;
+    }
+
+    .spinner {
+        margin: 200px auto;
+        width: 60px;
+        height: 60px;
+        position: relative;
+    }
+
+    .container1 > div, .container2 > div, .container3 > div {
+        width: 16px;
+        height: 16px;
+        background-color: #00a8f3;
+
+        border-radius: 100%;
+        position: absolute;
+        -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+        animation: bouncedelay 1.2s infinite ease-in-out;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .spinner .spinner-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container2 {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+    }
+
+    .container3 {
+        -webkit-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+    }
+
+    .circle1 { top: 0; left: 0; }
+    .circle2 { top: 0; right: 0; }
+    .circle3 { right: 0; bottom: 0; }
+    .circle4 { left: 0; bottom: 0; }
+
+    .container2 .circle1 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .container3 .circle1 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    .container1 .circle2 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .container2 .circle2 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .container3 .circle2 {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .container1 .circle3 {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .container2 .circle3 {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .container3 .circle3 {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .container1 .circle4 {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .container2 .circle4 {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .container3 .circle4 {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes bouncedelay {
+        0%, 80%, 100% { -webkit-transform: scale(0.0) }
+        40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes bouncedelay {
+        0%, 80%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        } 40% {
+              transform: scale(1.0);
+              -webkit-transform: scale(1.0);
+          }
+    }
+
+    .textbg {
+        position: relative;
+        top:-180px;
+    }
+
+    a.closeIcon {
+        position: absolute;
+        left:auto !important;
+        right:5% !important;
+        color:#fff !important;
+        font-size:1.2em !important;
+        opacity:1 !important;
+        top:3% !important;
+        transform: translate(0%,-50%) !important;
+        z-index:1000000000;
+    }
+</style>
+<div class="wrapper-md" ng-controller="photographController" >
+    <a class="closeIcon"><i class="fa fa-close" ng-click="close()"></i></a>
+   <div class="photoBg" >
+    <!-- 视频 -->
+       <video id="video" width="100%" height="500" autoplay style="width:100%;background:transparent;">
+       </video>
+       <canvas style="display:none; background-color:#F00;position: absolute;top:0;left:0;z-index:1000000;width:180px !important;" id="canvas">
+       </canvas>
+
+   </div>
+    <div class="container">
+        <div class="titleText" >
+            <label>在您学习过程中，将随机进行人脸验证，若非本人验证，则无法完成课程学习和获得继续教育签章。</label>
+        </div>
+
+        <div class="bottomDiv" >
+            <label>请注意：</label>
+            <div class="messageText" >
+                <div >
+                    1.请使头像正面位于画面框中
+                </div>
+                <div>
+                    2.请使头像尽量清晰
+                </div>
+                <div>
+                    3.请保证眼睛不反光，双眼可见
+                </div>
+                <div>
+                    4.请保证无墨迹，口罩等遮掩物
+                </div>
+            </div>
+            <div class="downBtnDiv" align="center" >
+                <a class="close"  ng-click="back()" >取消</a>
+                <a class="photoButtn" ng-click="startPat()">
+                    <i></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="maskBg"  style="display:none;" >
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+
+        </div>
+        <div class="textbg" >正在识别中...</div>
+    </div>
+    <script type="text/javascript" >
+        //这段代 主要是获取摄像头的视频流并显示在Video 签中
+        $("#video,#canvas").height($(window).height()).width($(window).width());
+        $(".photoButtn").click(function(){
+          //  $("#canvas").show();
+        });
+        //alert($("#video").height());
+       $("#canvas").width(180).height(180);
+        widthV = 180;//120
+        heightV = 180;//120
+       // $("#canvas").width("100%").height(1000);
+
+        var canvas=null,context=null,video=null;
+//        window.addEventListener("DOMContentLoaded", function ()
+//        {
+//            alert(2);
+            try{
+                canvas = document.getElementById("canvas");
+                context = canvas.getContext("2d");
+                video = document.getElementById("video");
+                //$(video).height($(window).height());
+                var videoObj = { "video": true,audio:false},
+                        flag=true,
+                        MediaErr = function (error)
+                        {
+                            flag=false;
+                            if (error.PERMISSION_DENIED)
+                            {
+                                alert('用户拒绝了浏览器请求媒体的权限', '提示');
+                            } else if (error.NOT_SUPPORTED_ERROR) {
+                                alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器', '提示');
+                                //IOS系统
+                               // statePro.go("h5.photographios");
+                            } else if (error.MANDATORY_UNSATISFIED_ERROR) {
+                                alert('指定的媒体类型未接收到媒体流', '提示');
+                            } else {
+                                alert('系统未能获取到摄像头，请确保摄像头已正确安装。或尝试刷新页面，重试', '提示');
+                            }
+                        };
+                //获取媒体的兼容代码，目前只支持（Firefox,Chrome,Opera）
+                if (navigator.getUserMedia)
+                {
+                    //qq浏览器不支持
+                    if (navigator.userAgent.indexOf('MQQBrowser') > -1) {
+                        alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器', '提示');
+                        //return false;
+                    }
+                    navigator.getUserMedia(videoObj, function (stream) {
+                        video.src = stream;
+                        video.play();
+                    }, MediaErr);
+                }
+                else if(navigator.webkitGetUserMedia)
+                {
+                    // alert( navigator.webkitGetUserMedia);
+                    navigator.webkitGetUserMedia(videoObj, function (stream)
+                    {
+                        video.src = window.webkitURL.createObjectURL(stream);
+                        video.play();
+                    }, function(e){
+                        alert("请允许访问摄像头！清除缓存后重试！");
+                    });
+                }
+                else if (navigator.mozGetUserMedia)
+                {
+                    navigator.mozGetUserMedia(videoObj, function (stream) {
+                        video.src = window.URL.createObjectURL(stream);
+                        video.play();
+                    }, MediaErr);
+                }
+                else if (navigator.msGetUserMedia)
+                {
+                    navigator.msGetUserMedia(videoObj, function (stream) {
+                        $(document).scrollTop($(window).height());
+                        video.src = window.URL.createObjectURL(stream);
+                        video.play();
+                    }, MediaErr);
+                }else{
+                    alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器');
+                    //statePro.go("h5.photographios");
+                }
+                if(flag){
+                    //alert('为了获得更准确的测试结果，请尽量将二维码置于框中，然后进行拍摄、扫描。 请确保浏览器有权限使用摄像功能');
+                }
+                //这个是拍照按钮的事件，
+               // $("#snap").click(function () {startPat();}).show();
+            }catch(e){
+                //alert("浏览器不支持HTML5 CANVAS");
+            }
+//        }, false);
+
+        //打印内容到页面
+        function printHtml(content){
+            $(window.document.body).append(content+"<br/>");
+        }
+
+    </script>
+</div>

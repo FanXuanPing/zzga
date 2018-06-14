@@ -1,0 +1,533 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：订单确认
+-->
+<style >
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+   
+}
+    .icon_query {
+        width:1em;
+        height:1em;
+        background:url(./img/index/query.png);
+        background-size:100% 100%;
+    }
+
+    .orser-top {
+        background-color: #fff;
+        height: 3.36rem;
+       line-height: 3.36rem;
+        border-bottom: 1px solid #eee;
+        font-size:1em;
+        position: relative;
+        padding-left: 0.3rem;
+    }
+
+    .orser-top-left {
+            float: left;
+		    width: 3.86rem;
+		    height: 2.85rem;
+		    position: absolute;
+		    top: 50%;
+		    margin-top: -1.43rem;
+     }
+
+    .orser-top-right  {
+          float: right;
+		    width: 6rem;
+		    height: 2.34rem;
+		    padding-left: 0.1rem;
+		    left: 4.1rem;
+		    position: absolute;
+		    top: 50%;
+		    margin-top: -1.17rem;
+}
+    .orser-top-left img {
+        width: 100%;
+        height:2.85rem;
+        font-size:1em;
+        vertical-align:top;
+    }
+
+    .orser-top .orser-top-right .name {
+       font-size: 0.3rem;
+	    line-height: 0.44rem;
+	    font-weight: 700;
+	    height: 0.88rem;
+	  
+    }
+
+    .orser-top .orser-top-right .term {
+            font-size: 1em;
+		    color: #ff7700;
+		    /* padding-top: 0.6em; */
+		    height: 0.6rem;
+		    line-height: 0.6rem;
+		  
+    }
+
+    .orser-top .orser-top-right .price {
+            font-size: 0.64rem;
+		    color: #ff7700;
+		    font-weight: 800;
+		    height: 0.8rem;
+		    line-height: 0.8rem;
+    }
+
+    .orser-top .orser-top-right .price > i {
+        font-size: 0.64rem !important;
+        margin-right:0.5em;
+    }
+
+    .orser-region {
+        margin-bottom:0.25rem;
+    }
+
+    .orser-region .tishi {
+        line-height: 3em;
+        padding: 0 0.5em;
+        font-size:0.7em;
+        background:#eee;
+        font-weight: 400;
+        color:#333;
+        margin-bottom:0px !important;
+        white-space:nowrap; 
+    }
+
+    .orser-region .city {
+           background-color: #fff;
+		    font-size: 0.4rem;
+		    font-weight: 700;
+		    line-height: 1.33rem;
+		    padding: 0 0.8em;
+		    border-bottom: 1px solid #eee;
+		    height: 1.33rem;
+		    color: #333;
+		    position: relative;
+        
+    }
+
+    .orser-region .city span {
+        float: right;
+        font-size: 0.4rem;
+        color: #999;
+        font-weight: normal;
+        margin-right: 0.5em;
+        padding-right: 1em;
+    }
+
+    .orser-payment .wechat-payment {
+        font-size: 1.em;
+        height: 3em;
+        border-bottom: 1px solid #eee;
+        padding:0 0.8em;
+        line-height:3em;
+    }
+
+    .orser-payment .choose img {
+        height: 1em;
+        vertical-align: middle;
+    }
+
+    .orser-payment {
+            height: 1.33rem;
+	    border-bottom: 1px solid #eee;
+	   background-color: #FFFFFF;
+	    line-height: 1.33rem;
+	    font-size: 0.4rem;
+	    margin-bottom: 0.25rem;
+    }
+
+    .orser-payment .choose {
+        float: right;
+    }
+
+    .orser-payment .icon img {
+        height: 1.4em;
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+
+    .orser-payment .alipay-to-pay {
+        font-size: 1em;
+        height: 3em;
+       /* border-bottom: 1px solid #eee;*/
+        padding:0 0.8em;
+        line-height:3em;
+    }
+
+    .wrapper-md {
+        background:#eee;
+    }
+
+    .orser-invoice {
+        background-color: #ffffff;
+	 /*   position: fixed;*/
+	    bottom: 4em;
+	    /*height: 45%;*/
+	    overflow: auto;
+	    width: 100%;
+    }
+  ul {
+        list-style: none;
+        margin:0px;
+        padding:0px;
+    }
+
+    .orser-invoice ul li {
+       	font-size: 0.4rem;
+	    height: 1.33rem;
+	    line-height: 1.33rem;
+	    padding: 0em 0.8em;
+	    overflow: hidden;
+	    border-bottom: 1px solid #eee
+    }
+	.orser-invoice ul li:last-child{
+		padding-bottom:3em ;
+	}
+    .orser-invoice img {
+        height: 1.4em;
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+
+    .orser-invoice ul li label {
+        width: 7.5em;
+        height: 3em;
+        text-align: justify;
+        float: left;
+        font-size: 1em;
+    }
+
+    .orser-invoice ul li input {
+        font-size: 1em;
+        width: 14em;
+        height:3em;
+        border: 0;
+    }
+
+    .orser-invoice ul li strong {
+        font-size: 1.2em;
+        color: #ff7700;
+    }
+
+    input::-webkit-input-placeholder { color:#ccc; font-weight: 400}
+
+    .to-pay .paybtn {
+      	width: 80%;
+	    height: 1.5rem;
+	    margin: 0.5rem;
+	    background: #ff7700;
+	    color: #ffffff;
+	    border: 0;
+	    font-size: 0.6rem;
+	    font-family: "Microsoft YaHei";
+	    border-radius: 1.45rem;
+	   
+    }
+	.to-pay{
+		   /* z-index: 2222;*/
+	    height: 2.5rem;
+	    background: #eee;
+	    position: fixed;
+	    bottom: 0;
+	    left: 0;
+	    width: 100%;
+	    text-align: center;
+	}
+    .popupAdd {
+        width:100%;
+        height:15em;
+        background:#fff;
+        position: fixed;
+        bottom:0;
+        z-index:1001;
+        display:none;
+    }
+
+    .popupAdd .tooler {
+        height:2.5em;
+        font-size:1.3em;
+        font-weight: 300;
+        color:#ccc;
+        border-bottom:1px solid #dddddd;
+        padding:0 0.5em;
+        line-height:2.5em;
+    }
+
+    .tooler .right {
+        float:right;
+        color:#58c8ff;
+    }
+
+    .leftDiv {
+        width:49%;
+        float:left;
+        height:100%;
+        background:#fff;
+        overflow:hidden;
+    }
+
+
+
+    .leftDiv ul {
+        padding:0px;
+        margin:0;
+    }
+
+    .leftDiv ul li,.rightDiv ul li {
+        height:3em;
+        line-height:3em;
+        font-size:1.3em !important;
+    }
+
+    .leftDiv > ul > li {
+        border:0px;
+    }
+
+    .leftDiv > ul > li.active {
+        background:#fff;
+    }
+
+    .leftDiv > ul > li.inactive {
+        background:transparent;
+    }
+
+    .leftDiv ul li > a {
+        margin-left:2em;
+    }
+
+    .NextCity ,.rightDiv{
+        position: fixed;
+        bottom:0em;
+        left:49%;
+        background:#fff;
+        width:50%;
+        height:9em;
+        overflow:auto;
+        margin-top:2px;
+    }
+
+    .NextCity > ul > li {
+        font-size:1em !important;
+        border:0px !important;
+    }
+
+    .inputDiv {
+
+        position: absolute;
+        top:50%;
+        font-size:1.3em;
+        height:3em;
+        left:0;
+        border-top:1px solid #dddddd;
+        border-bottom:1px solid #dddddd;
+        width:100%;
+    }
+    
+    
+    /*所在地区选择的右箭头*/
+	.gg{
+	    font-size: 0.7rem;
+	    position: absolute;
+	    top: 50%;
+	    margin-top: -12;
+	    margin-top: -0.35rem;
+		    
+	}
+    .qr{
+    	    color: #FFFFFF;
+	    font-size: 1.7em;
+	    float: left;
+	    line-height: 1.3em;
+	    margin-left: 0.4em;
+    	
+    }
+    
+    .orser-payment .wechat-payment {
+    font-size: 1.em;
+    height: 1.33rem;
+    /* border-bottom: 1px solid #eee; */
+    padding: 0 0.8em;
+    line-height: 1.33rem;
+}
+.contant{
+	width: 100%;
+	margin-bottom: 2.25rem;
+
+}
+
+.orser-invoice .danxuan > input{
+	width: 1em;
+	height: 1em;
+	font-size: 0.4rem;
+}
+</style>
+<div class="wrapper-md" ng-controller="confirmOrderController" style="border-radius: 0;">
+    <header align="center" style="height: 1.17rem;width: 100%;z-index: 999;font-size: 0.53rem;position: fixed;top: 0;">
+       <i ng-click="goBack()" class="fa qr fa-angle-left" style="line-height: 1.17rem;"></i><span >确认订单</span>
+    </header>
+    <div class="contant" style="border-radius: 0px;width: 100%;height: 13.5rem;margin-top: 1.17rem;">
+        <div class="orser-top">
+            <div class="orser-top-left">
+            	<img ng-show="orderInfo.showImage == null" src="img/index/orserpic.png" alt="">
+            	<img ng-show="orderInfo.showImage != null" ng-src="{{orderInfo.showImage}}" alt="">
+            </div>
+            <div class="orser-top-right">
+                <!--<div class="name" ng-bind="orderInfo.planName"></div>-->
+                <div class="name">回执单邮寄服务费</div>
+                <!--<div class="term">有效期截止为{{endDate}}</div>-->
+                <div class="price"><i>¥</i>{{price}}</div>
+            </div>
+        </div>
+        <div class="orser-region">
+            <!--<p class="tishi" >为帮助您顺利通过区域科目考试，请选择您所在的地区：</p>
+            <div class="city" ng-click="selectTestCity()"><span>{{testCityName}}&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right gg"></i></span>所在地</div>-->
+        </div>
+        <div class="orser-payment">
+            <div class="wechat-payment" ng-show="loginType == 'wx'">
+            	<span class="choose"><img src="img/index/yes.png" alt=""></span><span class="icon"><img src="img/index/wechat-pay.png" alt=""></span>微信支付
+            </div>
+            <div class="alipay-to-pay" ng-show="loginType == 'wap'">
+            	<span class="choose"><img src="img/index/yes.png" alt=""></span><span class="icon"><img src="img/index/alipay.png" alt=""></span>支付宝支付
+            </div>
+        </div>
+
+       <!--<div class="orser-invoice">
+            <ul>
+                <li ng-click="clickInvoice()">
+                	<span >
+                		<img src="img/index/yes.png" alt="" ng-if="isNeedInvoice == 1">
+                		<img src="img/index/no.png" alt="" ng-if="isNeedInvoice == 0">
+                	</span>
+                	需要发票
+                </li>
+                
+                <li ng-show="isNeedInvoice == 1">
+                    <label class="danxuan"><input type="radio" name="invoicType" ng-model="invoicType" value="0"/>个人</label>
+                    <label class="danxuan"><input type="radio" name="invoicType" ng-model="invoicType" value="1"/>单位</label>
+                </li>
+                <li ng-show="isNeedInvoice == 1">
+                    <label>发票抬头：</label>
+                    <input type="text" placeholder="请输入发票抬头" ng-model="invoiceHead">
+                </li>
+                <li ng-show="isNeedInvoice==1 && invoicType=='1'">
+                    <label>纳税人识别码：</label>
+                    <input type="text" placeholder="仅限单位填写" ng-model="invoiceNsrsbh">
+                </li>
+                <li ng-show="isNeedInvoice == 1">
+                    <label>收件人：</label>
+                    <input type="text" placeholder="请输入收件人姓名" ng-model="invoiceReceiver">
+                </li>
+                
+                <li ng-show="isNeedInvoice == 1">
+                    <label>地&nbsp;址：</label>
+                    <input type="text" placeholder="请选择地址" ng-show="invoiceProvinceName == null" ng-click="selectInvoiceCity()">
+                    <input type="text" ng-show="invoiceProvinceName != null" value="{{invoiceProvinceName+' '+invoiceCityName}}" ng-click="selectInvoiceCity()">
+                </li>
+                <li ng-show="isNeedInvoice == 1">
+                    <input type="text" placeholder="请输入详细地址" ng-model="invoiceAddress">
+                </li>
+                <li ng-show="isNeedInvoice == 1">
+                    <label>邮&nbsp;编：</label>
+                    <input type="text" placeholder="请输入所在地邮编" ng-model="invoicePostCode">
+                </li>
+                <li ng-show="isNeedInvoice == 1">
+                    <label>联系方式：</label>
+                    <input type="text" placeholder="请输入手机号码" ng-model="invoicePostMobile" ng-change="phoneOnlyNumber()">
+                </li>
+                <li style="line-height:140%;" ng-if="isNeedInvoice == 1">
+                	如您选择快递邮递，我们将收取您<strong>{{invoiceAmt}}</strong>元快递费，敬请您谅解！
+                </li>
+            </ul>
+        </div>-->
+
+  
+    </div>
+    <div class="to-pay">
+            <input type="button" class="paybtn" ng-click="payment()" value="合计支付 ¥{{totalAmt}}">
+    </div>
+    <div class="popupAdd" tabindex="-1" >
+        <div class="tooler" >
+            <span >取消</span>
+            <span class="right" >完成</span>
+        </div>
+        <div class="body" tabindex="-1" >
+            <div class="leftDiv" tabindex="-1" >
+                <ul>
+                    <li  ng-repeat="it in provinces" ng-class="{'active': it.isShow}" ng-click="itemClick(it,this)">
+                        <a data-cityid="{{it.id}}" >{{it.name}}</a>
+                        <div class="NextCity" >
+                            <ul>
+                                <li ng-repeat="item in it.cityList">
+                                    <a  data-cityid="{{item.id}}" >{{item.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="inputDiv" >
+
+            </div>
+        </div>
+    </div>
+    <div class="maskDiv" >
+
+    </div>
+    <script >
+    	
+        $(window).resize(function(){
+            $(".body").height($(window).height() - $("header").height() - $(".topQueryDiv").height() - 5);
+        }).resize();
+        var swiptleft = 0;
+        var isMove = false;
+        var oldy = 0;
+        var isF = true; //向上
+
+        $(".leftDiv").get(0).addEventListener("touchstart",function(e){
+            oldy = e.touches[0].pageY;   ;
+            console.log("-1--=="+oldy );
+
+        });
+
+            $(".leftDiv").get(0).addEventListener("touchmove",function(e){
+                var y = e.touches[0].pageY - oldy;
+                if ( y > 0 ) {
+                    isF = false;
+                    console.log("向下="+y );
+                    $(".leftDiv").scrollTop($(".leftDiv").scrollTop() - 5);
+                } else if ( y < 0 ) {
+                    isF = true;
+                    console.log("向上="+y );
+                    $(".leftDiv").scrollTop($(".leftDiv").scrollTop() + 5);
+                }
+            });
+
+        $(".leftDiv").get(0).addEventListener("touchend",function(e){
+            var ith = $(".leftDiv>ul>li").height();
+            var nb =  parseInt(($(".leftDiv").scrollTop()) /ith,10); //开始高度
+            var ne =  parseInt(($(".leftDiv").scrollTop() + ith * 3) /ith,10); //结束高度
+            var nowRow = nb + 1;
+
+            if ( isF == false ) { //向上
+               // $(".leftDiv").scrollTop(ith * (nb + 1- 3));
+                $(".leftDiv").scrollTop(ith * (ne - 3));
+            } else {
+                console.log(nb+"--"+ne);
+                $(".leftDiv").scrollTop(ith * (ne - 3));
+            }
+            $(" .NextCity").hide();
+            var li = $(".leftDiv > ul > li:eq("+nowRow+") > .NextCity").show();
+        });
+
+		
+    </script>
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+  <!-- 江苏苏州 - 苏州公安 - 在线学习 -->
+  <meta charset="utf-8" />
+  <title>在线学习</title>
+  <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/animate.css" type="text/css" /><!--动画css-->
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" /><!--字体图标库-->
+  <link rel="stylesheet" href="css/simple-line-icons.css" type="text/css" /><!--字体图标库-->
+  <link rel="stylesheet" href="css/font.css" type="text/css" /><!--字体图标库-->
+  <link rel="stylesheet" href="css/app.css" type="text/css" /><!--总的应用样式-->
+  <link rel="stylesheet" href="css/user.css" type="text/css" /><!--需要改写的样式-->
+  <link rel="stylesheet" href="css/public.css" type="text/css" /><!--需要改写的样式-->
+</head>
+<body ng-controller="AppCtrl">
+  <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+  
+  <script src="js/common/core.js"></script>
+  
+  <!-- jQuery -->
+  <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+  <!-- <script src="js/fw/jquery/jquery-1.12.2.js"></script> -->
+  <script src="js/fw/jquery/jquery-1.12.2.min.js"></script>
+  
+  <!-- Angular -->
+  <script src="vendor/angular/angular.js"></script>
+  <!-- Angular插件 -->
+  <script src="vendor/angular/angular-animate/angular-animate.js"></script><!-- Angular动画 -->
+  <script src="vendor/angular/angular-cookies/angular-cookies.js"></script><!-- Angular cookies处理-->
+  <!-- ngularjs还提供了另外一个可选的服务$resource,使用它可以非常方便的同支持restful的服务单进行数据交互-->
+  <script src="vendor/angular/angular-resource/angular-resource.js"></script>
+ <!-- $sanitize会根绝一个白名单来净化html标签.这样,不安全的内容就不会被返回.添加绑定动态的html内容-->
+  <script src="vendor/angular/angular-sanitize/angular-sanitize.js"></script>
+  <script src="vendor/angular/angular-touch/angular-touch.js"></script><!-- Angular 触摸处理事件-->
+<!-- Vendor -->
+  <!-- AngularJS ui-router (嵌套路由)-->
+  <!--  ui-sref=".Page1" 用于子路由的刷新  -->
+  <script src="vendor/angular/angular-ui-router/angular-ui-router.js"></script> 
+  <script src="vendor/angular/ngstorage/ngStorage.js"></script>
+
+  <!-- bootstrap -->
+  <script src="vendor/jquery/bootstrap.js"></script>
+  
+  <!-- bootstrap组件对angular 的支持-->
+  <script src="vendor/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!-- lazyload -->
+  <script src="vendor/angular/oclazyload/ocLazyLoad.js"></script>
+  <!-- translate -->
+  <script src="vendor/angular/angular-translate/angular-translate.js"></script> <!-- AngularJS 国际化-->
+  <script src="vendor/angular/angular-translate/loader-static-files.js"></script>
+  <script src="vendor/angular/angular-translate/storage-cookie.js"></script>
+  <script src="vendor/angular/angular-translate/storage-local.js"></script>
+
+  <!-- App -->
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/config.lazyload.js"></script>
+  <script src="js/config.router.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/services/ui-load.js"></script>
+  
+  <script src="js/directives/setnganimate.js"></script>
+  <script src="js/directives/ui-butterbar.js"></script>
+  <script src="js/directives/ui-focus.js"></script>
+  <script src="js/directives/ui-fullscreen.js"></script>
+  <script src="js/directives/ui-jq.js"></script>
+  <script src="js/directives/ui-module.js"></script>
+  <script src="js/directives/ui-nav.js"></script>
+  <script src="js/directives/ui-scroll.js"></script>
+  <script src="js/directives/ui-shift.js"></script>
+  <script src="js/directives/ui-toggleclass.js"></script>
+  <script src="js/directives/ui-validate.js"></script>
+  <!-- Lazy loading -->
+  
+  <!-- my js -->
+  <script src="js/common/myLand.js"></script>
+  
+</body>
+</html>

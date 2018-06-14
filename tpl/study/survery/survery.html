@@ -1,0 +1,233 @@
+
+<style>
+	  body {
+        background: #fff;
+    }
+
+    header > a {
+        position: absolute;
+        left:5%;
+        color:#fff;
+        font-size:1.8em;
+    }
+	.body {
+        height:100%;
+        overflow:hidden;
+        padding-bottom:3em;
+        margin-bottom:3em;
+    }
+
+    .body  ul li {
+        width:100%;
+        border-bottom:1px #dedede solid;
+        font-size:1.2em;
+        color:#333;
+        font-weight: 300;
+        position:relative;
+        display:block;
+        height:auto;
+    }
+
+    .body  ul li > label {
+        margin:0 2.5%;
+        width:95%;
+        font-weight: 500;
+        line-height:3em;
+        height:auto;
+        display:inline-block;
+        overflow:inherit;
+        padding:0.3em 0;
+        position: relative;
+        /*text-overflow: ellipsis;*/
+    }
+
+    .body  ul li > label > span {
+        display:inline-block;
+        width:80%;
+        overflow:inherit;
+        white-space: pre-wrap;
+        line-height:150% !important;
+        position: relative;
+        top:0.2em;
+        left:3em;
+        color:#333;
+    }
+
+    .body  ul li >label> a {
+        display:inline-block;
+        position: relative;
+        font-size:2em;
+        font-weight: 100;
+        color:#c3c3c3;
+        transform: translate(0,-50%);
+        height:2em;
+        line-height:2em;
+        margin-right:0.5em;
+    }
+
+    .body  ul li > label>  a.title {
+        border:1px solid #008ef5;
+        font-size:0.7em;
+        color:#008ef5;
+        padding:0 0.5em;
+        top:2em;
+
+        position: absolute;
+        border-radius: 1em;
+    }
+
+
+    .body  ul li >label>  a.icon {
+        position: absolute;
+        background: #cccccc;
+        font-size:0.9em;
+        color:#fff;
+        border-radius: 50%;
+        height:2em;
+        width:2em;
+        text-align: center;
+        top:50%;
+        transform: translate(0,-50%);
+    }
+
+    .body ul li.selectLi  > label>  a.icon{
+        background:#008ef5 !important;
+        color:#FFF !important;;
+    }
+
+    .body ul li.rightLi > label>  a.icon{
+        background:#38ba9b !important;
+        color:#FFF !important;
+    }
+
+    .body ul li.rightLi > label {
+        color:#38ba9b;
+    }
+
+    .body ul li.errorLi > label>  a.icon{
+        background:#ff4242 !important;
+        color:#FFF !important;
+    }
+
+    .body ul li.errorLi {
+        background:#eee;
+    }
+
+    .body ul li.errorLi > label {
+        color:#ff4242;
+    }
+
+    .body ul li.rightLi {
+        background:#eee;
+    }
+
+
+    .body  ul li >label > .text {
+        margin-left:0em;
+        position: relative;
+        font-weight: 100 !important;
+        top:-0.05em;
+    }
+    
+    
+    footer {
+        height:3em;
+        position: fixed;
+        background: #eee;
+        width:100%;
+        bottom:0px;
+        left:0;
+    }
+    footer > a {
+        background: #38ba9b;
+        color:#fff;
+        font-size:1.1em;
+        padding:0em 0.8em;
+        position: absolute;
+        height:2em;
+        line-height:2.1em;
+        top:0.3em;
+        border-radius: 1em;
+        left:5%;
+        font-weight: 200 !important;
+        overflow:hidden;
+    }
+
+    .next {
+        left:auto;
+        right:5%;
+    }
+
+    .btn_submit {
+        display:inline-block;
+        margin:2em 25%;
+        background:#eee;
+        color:#ccc;
+        font-size:1.3em;
+        width:50%;
+        padding:0.8em 3em;
+        border-radius: 1.5em;
+        text-align: center;
+    }
+
+    footer label {
+        line-height:3em;
+    }
+     header {
+        position: relative;
+    }
+
+    header > a.close {
+        left:auto !important;
+        right:5% !important;
+        color:#fff !important;
+        font-size:1.2em !important;
+        opacity:1 !important;
+        top:50% !important;
+        transform: translate(0%,-50%) !important;
+    }
+</style>
+
+<div class="wrapper-md" ng-controller="surveryController">
+    <header align="center" >
+        <a ng-click="goBack()"><i class="fa fa-angle-left"></i></a><span>调查问卷</span><a class="close"><i class="fa fa-close" ng-click="close()"></i></a>
+    </header>
+    <div class="container">
+    	  <div class="body" >
+    	  	  <ul>
+                <li>
+                    <label> 
+                    	<a class="title" ng-switch="nowSurvery.examType">
+                    		<span ng-switch-when="0">单选</span>
+                    		<span ng-switch-when="1">多选</span>
+                    		<span ng-switch-when="3">判断</span>
+                    	</a> 
+                    	<span>{{nowSurvery.content}}</span>
+                    </label>
+                </li>
+                <!--选项-->
+                <li ng-repeat="item in nowSurvery.options" ng-class="{true: 'selectLi'}[{{item.id}}==answerId]" ng-click="clickAnswer('{{item.id}}')" id="{{item.id}}">
+                    <label >
+                       <a class="icon">{{optionLetter[$index]}}</a>  <span class="text">{{item.answerContent}}</span>
+                    </label>
+                </li>
+                <!--<li ng-class="{'rightLi':(item.isAnswer == 1),'errorLi':(item.isAnswer==0 && item.selectLi)}" ng-repeat="item in nowTest.detail" ng-if="isShowAnswer">
+                    <label  >
+                        <a class="icon">
+                        	<i class="fa fa-check" ng-if="item.isAnswer == '1'"></i>
+                        	<i class="fa fa-close" ng-if="item.isAnswer == '0' && item.selectLi"></i>
+                        	<a class="icon" ng-if="item.isAnswer == '0' && !item.selectLi">{{optionLetter[$index]}}</a>
+                        </a>
+                        <span class="text">{{item.optionDesc}}</span>
+                    </label>
+                </li>-->
+            </ul>
+    	  </div>
+    </div>
+     <footer align="center" >
+        <a class="pref" ng-click="preSuvery()" id="lastTestButton" ng-show="curNum>0">上一题</a>
+        <label>{{curNum+1}}/{{totalNum}}</label>
+        <a class="next"  id="nextTestButton" ng-click="nextSuvery();" ng-show="curNum+1<totalNum">下一题</a>
+        <a class="next"  id="submitSuveryButton" ng-click="submitSuvery();" ng-show="curNum+1==totalNum">提交</a>
+    </footer>
+</div>

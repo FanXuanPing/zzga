@@ -1,0 +1,118 @@
+<!--
+	作者：TongAn
+	时间：2016-11-03
+	描述：身份证验证提示页面
+-->
+<style>
+	html{
+		font-size: 100px;
+	}
+	  header {
+           display: inline-block;
+		    width: 100%;
+		    height: 1rem;
+		    z-index: 1000;
+		    /*float: left;*/
+		    background: #FFFFFF;
+		    border-bottom: 1px solid #CCCCCC;
+    }
+
+    header >div {
+           position: relative;
+		    text-align: center;
+		    width: 100%;
+		    font-size: 0.44rem;
+		    color: #3986f5;
+		    height: 100%;
+		    line-height: 1rem;
+    }
+ header >div>span{
+ 	color:#3986f5 ;
+ 	float: left;
+ 	margin-left: 1em;
+ 	font-size: 0.44rem;
+ }
+ 
+ header >div>span>i {
+ 	font-size: 0.8em;
+    position: absolute;
+    top: 0.4rem;
+ }
+.app-header-fixed{
+	background-color: #FFFFFF;
+}
+.wrapper-md{
+	position: relative;
+	
+}
+
+.sfzimg{
+	height: 1.95rem;
+	margin-left: 1rem;
+	line-height: 1.95rem;
+}
+.promptDiv > div{
+	clear: both;
+	    height: 1.95rem;
+    margin: 0.5rem 0;
+}
+.promptDiv > div >span{
+	display: inline-block;
+	width: 1.4rem;
+	line-height: 0.3rem;
+	margin-left: 0.3rem;
+	color: #038EF5;
+	margin-top: 0.7rem;
+}  
+.promptDiv > div >span,.promptDiv > div >div{
+	float: left;
+}
+.fszDiv{
+	height: 1.95rem;
+	width: 3.2rem;
+	margin-left: 0.35rem;
+}
+.fszDiv > img{
+	width: 100%;
+	height: 100%;
+}
+.nextBtn{
+	width: 6rem;
+	height: 0.95rem;
+	text-align: center;
+	line-height: 0.95rem;
+	border: 1px solid #038EF5;
+	color: #038EF5;
+	font-size: 0.28rem;margin: auto;
+	border-radius: 0.5rem;
+}
+</style>                               
+<div class="wrapper-md" ng-controller="idCardTsController">
+    <header align="center" class="header">
+    	<div><span><i style="font-size: 0.8em;" class="fa fa-angle-left " ng-click="goBackLast()">返回</i></span>拍摄规范</div>
+    </header>
+    <div class="promptDiv">
+    	<div>
+    		<div class="sfzimg"><img src="img/h5/duigou.png" /></div>
+    		<div class="fszDiv"><img src="img/h5/ture.png"/></div>
+    		<span>边角完整字迹清晰</span>
+    	</div>
+    	<div>
+    		<div class="sfzimg"><img src="img/h5/chahao.png" /></div>
+    		<div class="fszDiv"><img src="img/h5/cuowu1.png"/></div>
+    		<span>缺边角</span>
+    	</div>
+    	<div>
+    		<div class="sfzimg"><img src="img/h5/chahao.png" /></div>
+    		<div class="fszDiv"><img src="img/h5/cuowu2.png"/></div>
+    		<span>模糊</span>
+    	</div>
+    	<div>
+    		<div class="sfzimg"><img src="img/h5/chahao.png" /></div>
+    		<div class="fszDiv"><img src="img/h5/cuowu3.png"/></div>
+    		<span>闪光灯</span>
+    	</div>
+    </div>
+	
+	<div class="nextBtn" ng-click="goIdCard()">下一步</div>
+</div>
